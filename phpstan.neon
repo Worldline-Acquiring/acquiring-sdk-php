@@ -1,0 +1,16 @@
+parameters:
+  paths:
+    - src
+    - lib
+    - tests
+  level: 5
+
+  treatPhpDocTypesAsCertain: false
+
+  ignoreErrors:
+    - message: '#Method .* should return Worldline\\Acquiring\\Sdk\\V.*\\Domain\\.* but returns Worldline\\Acquiring\\Sdk\\Domain\\DataObject\.#'
+      path: */Worldline/Acquiring/Sdk/*
+    - message: '#Method .* should return null but returns Worldline\\Acquiring\\Sdk\\Domain\\DataObject\.#'
+      path: */Worldline/Acquiring/Sdk/*
+    - message: '#Call to function is_null\(\) with .* will always evaluate to false\.#'
+      path: */Worldline/Acquiring/Sdk/*

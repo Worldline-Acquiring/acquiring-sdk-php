@@ -1,0 +1,11 @@
+.idea
+.buildpath
+.project
+.settings
+*.pyc
+docs
+/composer.lock
+/phpunit.xml
+/.phpunit.result.cache
+/tests/config.json
+/vendor/

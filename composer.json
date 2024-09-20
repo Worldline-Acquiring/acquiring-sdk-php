@@ -1,0 +1,34 @@
+{
+    "name": "worldline-acquiring/acquiring-sdk-php",
+    "type": "library",
+    "description": "PHP SDK to communicate with the Worldline Acquiring platform using the Worldline Acquiring API",
+    "homepage": "https://worldline.com/",
+    "keywords": ["SDK"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Worldline",
+            "homepage": "https://worldline.com/"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "robtimus/multipart": "~1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Worldline\\Acquiring\\Sdk\\": ["src/Worldline/Acquiring/Sdk", "lib/Worldline/Acquiring/Sdk"]
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Worldline\\Acquiring\\Sdk\\": ["tests/Worldline/Acquiring/Sdk"]
+        }
+    }
+}

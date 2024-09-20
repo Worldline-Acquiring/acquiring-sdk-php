@@ -1,0 +1,13 @@
+{
+    "acquirer_id":          "ACQUIRER_ID",
+    "merchant_id":          "MERCHANT_ID",
+    "api_endpoint":         "API_ENDPOINT",
+    "proxy_host":           "HOST_OR_EMPTY",
+    "proxy_port":           "PORT_OR_EMPTY",
+    "proxy_username":       "USERNAME_OR_EMPTY",
+    "proxy_password":       "PASSWORD_OR_EMPTY",
+    "oauth2_client_id":     "CLIENT_ID_OR_EMPTY",
+    "oauth2_client_secret": "CLIENT_SECRET_OR_EMPTY",
+    "oauth2_token_uri":     "TOKEN_URI_OR_EMPTY",
+    "httpbin_url":          "http://httpbin.org"
+}
