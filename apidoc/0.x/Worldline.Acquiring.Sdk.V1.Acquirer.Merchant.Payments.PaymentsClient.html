@@ -1,0 +1,604 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Class Worldline\Acquiring\Sdk\V1\Acquirer\Merchant\Payments\PaymentsClient | Worldline Acquiring PHP SDK API</title>
+	<link rel="stylesheet" href="assets/main.css">
+	<script src="assets/main.js" defer></script>
+</head>
+
+<body class="layout">
+	<div class="layout-aside">
+	<div class="menu">
+			<div class="menu-section">
+				<h3>Namespaces</h3>
+	<ul>
+			<li class="menuGroup-item active">
+				<a href="namespace-Worldline.html">Worldline</a>
+	<ul>
+			<li class="menuGroup-item active">
+				<a href="namespace-Worldline.Acquiring.html">Acquiring</a>
+	<ul>
+			<li class="menuGroup-item active">
+				<a href="namespace-Worldline.Acquiring.Sdk.html">Sdk</a>
+	<ul>
+			<li class="menuGroup-item">
+				<a href="namespace-Worldline.Acquiring.Sdk.Authentication.html">Authentication</a>
+			</li>
+			<li class="menuGroup-item">
+				<a href="namespace-Worldline.Acquiring.Sdk.Communication.html">Communication</a>
+			</li>
+			<li class="menuGroup-item">
+				<a href="namespace-Worldline.Acquiring.Sdk.Domain.html">Domain</a>
+			</li>
+			<li class="menuGroup-item">
+				<a href="namespace-Worldline.Acquiring.Sdk.JSON.html">JSON</a>
+			</li>
+			<li class="menuGroup-item">
+				<a href="namespace-Worldline.Acquiring.Sdk.Logging.html">Logging</a>
+			</li>
+			<li class="menuGroup-item active">
+				<a href="namespace-Worldline.Acquiring.Sdk.V1.html">V1</a>
+	<ul>
+			<li class="menuGroup-item active">
+				<a href="namespace-Worldline.Acquiring.Sdk.V1.Acquirer.html">Acquirer</a>
+	<ul>
+			<li class="menuGroup-item active">
+				<a href="namespace-Worldline.Acquiring.Sdk.V1.Acquirer.Merchant.html">Merchant</a>
+	<ul>
+			<li class="menuGroup-item">
+				<a href="namespace-Worldline.Acquiring.Sdk.V1.Acquirer.Merchant.Accountverifications.html">Accountverifications</a>
+			</li>
+			<li class="menuGroup-item">
+				<a href="namespace-Worldline.Acquiring.Sdk.V1.Acquirer.Merchant.Dynamiccurrencyconversion.html">Dynamiccurrencyconversion</a>
+			</li>
+			<li class="menuGroup-item active">
+				<a href="namespace-Worldline.Acquiring.Sdk.V1.Acquirer.Merchant.Payments.html">Payments</a>
+			</li>
+			<li class="menuGroup-item">
+				<a href="namespace-Worldline.Acquiring.Sdk.V1.Acquirer.Merchant.Refunds.html">Refunds</a>
+			</li>
+			<li class="menuGroup-item">
+				<a href="namespace-Worldline.Acquiring.Sdk.V1.Acquirer.Merchant.Technicalreversals.html">Technicalreversals</a>
+			</li>
+	</ul>
+			</li>
+	</ul>
+			</li>
+			<li class="menuGroup-item">
+				<a href="namespace-Worldline.Acquiring.Sdk.V1.Domain.html">Domain</a>
+			</li>
+			<li class="menuGroup-item">
+				<a href="namespace-Worldline.Acquiring.Sdk.V1.Ping.html">Ping</a>
+			</li>
+	</ul>
+			</li>
+	</ul>
+			</li>
+	</ul>
+			</li>
+	</ul>
+			</li>
+	</ul>
+			</div>
+
+		<div class="menu-section">
+			<h3>Classes</h3>
+			<ul>
+					<li>
+						<a href="Worldline.Acquiring.Sdk.V1.Acquirer.Merchant.Payments.GetPaymentStatusParams.html">
+							GetPaymentStatusParams
+						</a>
+					</li>
+					<li class="active">
+						<a href="Worldline.Acquiring.Sdk.V1.Acquirer.Merchant.Payments.PaymentsClient.html">
+							PaymentsClient
+						</a>
+					</li>
+			</ul>
+		</div>
+
+
+
+
+
+	</div>
+	</div>
+
+	<div class="layout-main">
+		<div class="layout-navbar">
+	<nav class="navbar">
+		<div class="navbar-left">
+			<ul class="navbar-links">
+				<li>
+					<a href="index.html">Overview</a>
+				</li>
+				<li>
+					
+						<a href="namespace-Worldline.Acquiring.Sdk.V1.Acquirer.Merchant.Payments.html">Namespace</a>
+					
+				</li>
+<li class="active"><a href="Worldline.Acquiring.Sdk.V1.Acquirer.Merchant.Payments.PaymentsClient.html">Class</a></li>				<li>
+					<a href="tree.html">Tree</a>
+				</li>
+			</ul>
+		</div>
+		<div class="navbar-right">
+	<div class="search" data-elements="assets/elements.js">
+		<input class="search-input" placeholder="Search class, function or namespace" autofocus>
+		<ul class="search-results"></ul>
+	</div>
+		</div>
+	</nav>
+		</div>
+
+		<div class="layout-content">
+		<h1>
+			Class <a href="namespace-Worldline.html">Worldline</a>\<a href="namespace-Worldline.Acquiring.html">Acquiring</a>\<a href="namespace-Worldline.Acquiring.Sdk.html">Sdk</a>\<a href="namespace-Worldline.Acquiring.Sdk.V1.html">V1</a>\<a href="namespace-Worldline.Acquiring.Sdk.V1.Acquirer.html">Acquirer</a>\<a href="namespace-Worldline.Acquiring.Sdk.V1.Acquirer.Merchant.html">Merchant</a>\<a href="namespace-Worldline.Acquiring.Sdk.V1.Acquirer.Merchant.Payments.html">Payments</a>\<a href="Worldline.Acquiring.Sdk.V1.Acquirer.Merchant.Payments.PaymentsClient.html">PaymentsClient</a>
+		</h1>
+
+
+	<table class="classLikeSignatureTable">
+
+
+
+		<tr>
+			<th><code>extends</code></th>
+			<td>
+<code><a href="Worldline.Acquiring.Sdk.ApiResource.html"><span title="Worldline\Acquiring\Sdk\ApiResource">ApiResource</span></a></code>			</td>
+		</tr>
+
+	</table>
+		<div class="classLikeDescription">
+	<div class="description"><p>Payments client.</p>
+</div>
+		</div>
+
+			<div class="classLikeSection">
+	<ul class="classTree">
+	<li>
+<a href="Worldline.Acquiring.Sdk.ApiResource.html"><span>Worldline\Acquiring\Sdk\ApiResource</span></a>
+
+
+	<ul class="classTree">
+	<li>
+<b><span class="active">Worldline\Acquiring\Sdk\V1\Acquirer\Merchant\Payments\PaymentsClient</span></b>
+
+
+	</li>
+	</ul>
+	</li>
+	</ul>
+			</div>
+
+		<div class="classLikeSection">
+			<b>Located at</b> <a href="source-src.Worldline.Acquiring.Sdk.V1.Acquirer.Merchant.Payments.PaymentsClient.html#33" title="Go to source code">src/Worldline/Acquiring/Sdk/V1/Acquirer/Merchant/Payments/PaymentsClient.php</a><br>
+		</div>
+
+
+
+		<table class="table" id="methods">
+			<tr>
+				<th class="table-heading sortable" colspan="3" title="Switch between natural and alphabetical order">Methods</th>
+			</tr>
+
+	<tr class="expandable collapsed" data-order="processPayment" id="_processPayment">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-src.Worldline.Acquiring.Sdk.V1.Acquirer.Merchant.Payments.PaymentsClient.html#38-73" title="Go to source code">processPayment</a>(<span><a href="Worldline.Acquiring.Sdk.V1.Domain.ApiPaymentRequest.html"><span title="Worldline\Acquiring\Sdk\V1\Domain\ApiPaymentRequest">ApiPaymentRequest</span></a> <var>$body</var></span>, <span><a href="Worldline.Acquiring.Sdk.CallContext.html"><span title="Worldline\Acquiring\Sdk\CallContext">CallContext</span></a>|null <var>$callContext</var> = <span class="php-kw">null</span></span>): <a href="Worldline.Acquiring.Sdk.V1.Domain.ApiPaymentResponse.html"><span title="Worldline\Acquiring\Sdk\V1\Domain\ApiPaymentResponse">ApiPaymentResponse</span></a></code>
+
+
+	<div class="expandable-collapsedView">
+		Resource /processing/v1/&#123;acquirerId}/&#123;merchantId}/payments - Create payment
+	</div>
+
+	<div class="expandable-expandedView">
+	<div class="description"><p>Resource /processing/v1/{acquirerId}/{merchantId}/payments - Create payment</p>
+</div>
+
+
+
+							<h4>Throws</h4>
+							<table>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.V1.ValidationException.html"><span>Worldline\Acquiring\Sdk\V1\ValidationException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.V1.AuthorizationException.html"><span>Worldline\Acquiring\Sdk\V1\AuthorizationException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.V1.ReferenceException.html"><span>Worldline\Acquiring\Sdk\V1\ReferenceException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.V1.PlatformException.html"><span>Worldline\Acquiring\Sdk\V1\PlatformException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.V1.ApiException.html"><span>Worldline\Acquiring\Sdk\V1\ApiException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.Communication.InvalidResponseException.html"><span>Worldline\Acquiring\Sdk\Communication\InvalidResponseException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+							</table>
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_processPayment">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="getPaymentStatus" id="_getPaymentStatus">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-src.Worldline.Acquiring.Sdk.V1.Acquirer.Merchant.Payments.PaymentsClient.html#75-111" title="Go to source code">getPaymentStatus</a>(
+	<span>string <var>$paymentId</var></span>,
+	<span><a href="Worldline.Acquiring.Sdk.V1.Acquirer.Merchant.Payments.GetPaymentStatusParams.html"><span title="Worldline\Acquiring\Sdk\V1\Acquirer\Merchant\Payments\GetPaymentStatusParams">GetPaymentStatusParams</span></a> <var>$query</var></span>,
+	<span><a href="Worldline.Acquiring.Sdk.CallContext.html"><span title="Worldline\Acquiring\Sdk\CallContext">CallContext</span></a>|null <var>$callContext</var> = <span class="php-kw">null</span></span>,
+): <a href="Worldline.Acquiring.Sdk.V1.Domain.ApiPaymentResource.html"><span title="Worldline\Acquiring\Sdk\V1\Domain\ApiPaymentResource">ApiPaymentResource</span></a></code>
+
+
+	<div class="expandable-collapsedView">
+		Resource /processing/v1/&#123;acquirerId}/&#123;merchantId}/payments/&#123;paymentId} - Retrieve payment
+	</div>
+
+	<div class="expandable-expandedView">
+	<div class="description"><p>Resource /processing/v1/{acquirerId}/{merchantId}/payments/{paymentId} - Retrieve payment</p>
+</div>
+
+
+
+							<h4>Throws</h4>
+							<table>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.V1.ValidationException.html"><span>Worldline\Acquiring\Sdk\V1\ValidationException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.V1.AuthorizationException.html"><span>Worldline\Acquiring\Sdk\V1\AuthorizationException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.V1.ReferenceException.html"><span>Worldline\Acquiring\Sdk\V1\ReferenceException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.V1.PlatformException.html"><span>Worldline\Acquiring\Sdk\V1\PlatformException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.V1.ApiException.html"><span>Worldline\Acquiring\Sdk\V1\ApiException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.Communication.InvalidResponseException.html"><span>Worldline\Acquiring\Sdk\Communication\InvalidResponseException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+							</table>
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_getPaymentStatus">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="simpleCaptureOfPayment" id="_simpleCaptureOfPayment">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-src.Worldline.Acquiring.Sdk.V1.Acquirer.Merchant.Payments.PaymentsClient.html#113-150" title="Go to source code">simpleCaptureOfPayment</a>(
+	<span>string <var>$paymentId</var></span>,
+	<span><a href="Worldline.Acquiring.Sdk.V1.Domain.ApiCaptureRequest.html"><span title="Worldline\Acquiring\Sdk\V1\Domain\ApiCaptureRequest">ApiCaptureRequest</span></a> <var>$body</var></span>,
+	<span><a href="Worldline.Acquiring.Sdk.CallContext.html"><span title="Worldline\Acquiring\Sdk\CallContext">CallContext</span></a>|null <var>$callContext</var> = <span class="php-kw">null</span></span>,
+): <a href="Worldline.Acquiring.Sdk.V1.Domain.ApiActionResponse.html"><span title="Worldline\Acquiring\Sdk\V1\Domain\ApiActionResponse">ApiActionResponse</span></a></code>
+
+
+	<div class="expandable-collapsedView">
+		Resource /processing/v1/&#123;acquirerId}/&#123;merchantId}/payments/&#123;paymentId}/captures - Capture payment
+	</div>
+
+	<div class="expandable-expandedView">
+	<div class="description"><p>Resource /processing/v1/{acquirerId}/{merchantId}/payments/{paymentId}/captures - Capture payment</p>
+</div>
+
+
+
+							<h4>Throws</h4>
+							<table>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.V1.ValidationException.html"><span>Worldline\Acquiring\Sdk\V1\ValidationException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.V1.AuthorizationException.html"><span>Worldline\Acquiring\Sdk\V1\AuthorizationException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.V1.ReferenceException.html"><span>Worldline\Acquiring\Sdk\V1\ReferenceException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.V1.PlatformException.html"><span>Worldline\Acquiring\Sdk\V1\PlatformException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.V1.ApiException.html"><span>Worldline\Acquiring\Sdk\V1\ApiException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.Communication.InvalidResponseException.html"><span>Worldline\Acquiring\Sdk\Communication\InvalidResponseException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+							</table>
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_simpleCaptureOfPayment">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="reverseAuthorization" id="_reverseAuthorization">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-src.Worldline.Acquiring.Sdk.V1.Acquirer.Merchant.Payments.PaymentsClient.html#152-189" title="Go to source code">reverseAuthorization</a>(
+	<span>string <var>$paymentId</var></span>,
+	<span><a href="Worldline.Acquiring.Sdk.V1.Domain.ApiPaymentReversalRequest.html"><span title="Worldline\Acquiring\Sdk\V1\Domain\ApiPaymentReversalRequest">ApiPaymentReversalRequest</span></a> <var>$body</var></span>,
+	<span><a href="Worldline.Acquiring.Sdk.CallContext.html"><span title="Worldline\Acquiring\Sdk\CallContext">CallContext</span></a>|null <var>$callContext</var> = <span class="php-kw">null</span></span>,
+): <a href="Worldline.Acquiring.Sdk.V1.Domain.ApiReversalResponse.html"><span title="Worldline\Acquiring\Sdk\V1\Domain\ApiReversalResponse">ApiReversalResponse</span></a></code>
+
+
+	<div class="expandable-collapsedView">
+		Resource /processing/v1/&#123;acquirerId}/&#123;merchantId}/payments/&#123;paymentId}/authorization-reversals - Reverse authorization
+	</div>
+
+	<div class="expandable-expandedView">
+	<div class="description"><p>Resource /processing/v1/{acquirerId}/{merchantId}/payments/{paymentId}/authorization-reversals - Reverse authorization</p>
+</div>
+
+
+
+							<h4>Throws</h4>
+							<table>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.V1.ValidationException.html"><span>Worldline\Acquiring\Sdk\V1\ValidationException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.V1.AuthorizationException.html"><span>Worldline\Acquiring\Sdk\V1\AuthorizationException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.V1.ReferenceException.html"><span>Worldline\Acquiring\Sdk\V1\ReferenceException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.V1.PlatformException.html"><span>Worldline\Acquiring\Sdk\V1\PlatformException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.V1.ApiException.html"><span>Worldline\Acquiring\Sdk\V1\ApiException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.Communication.InvalidResponseException.html"><span>Worldline\Acquiring\Sdk\Communication\InvalidResponseException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+							</table>
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_reverseAuthorization">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="incrementPayment" id="_incrementPayment">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-src.Worldline.Acquiring.Sdk.V1.Acquirer.Merchant.Payments.PaymentsClient.html#191-228" title="Go to source code">incrementPayment</a>(
+	<span>string <var>$paymentId</var></span>,
+	<span><a href="Worldline.Acquiring.Sdk.V1.Domain.ApiIncrementRequest.html"><span title="Worldline\Acquiring\Sdk\V1\Domain\ApiIncrementRequest">ApiIncrementRequest</span></a> <var>$body</var></span>,
+	<span><a href="Worldline.Acquiring.Sdk.CallContext.html"><span title="Worldline\Acquiring\Sdk\CallContext">CallContext</span></a>|null <var>$callContext</var> = <span class="php-kw">null</span></span>,
+): <a href="Worldline.Acquiring.Sdk.V1.Domain.ApiIncrementResponse.html"><span title="Worldline\Acquiring\Sdk\V1\Domain\ApiIncrementResponse">ApiIncrementResponse</span></a></code>
+
+
+	<div class="expandable-collapsedView">
+		Resource /processing/v1/&#123;acquirerId}/&#123;merchantId}/payments/&#123;paymentId}/increments - Increment authorization
+	</div>
+
+	<div class="expandable-expandedView">
+	<div class="description"><p>Resource /processing/v1/{acquirerId}/{merchantId}/payments/{paymentId}/increments - Increment authorization</p>
+</div>
+
+
+
+							<h4>Throws</h4>
+							<table>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.V1.ValidationException.html"><span>Worldline\Acquiring\Sdk\V1\ValidationException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.V1.AuthorizationException.html"><span>Worldline\Acquiring\Sdk\V1\AuthorizationException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.V1.ReferenceException.html"><span>Worldline\Acquiring\Sdk\V1\ReferenceException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.V1.PlatformException.html"><span>Worldline\Acquiring\Sdk\V1\PlatformException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.V1.ApiException.html"><span>Worldline\Acquiring\Sdk\V1\ApiException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.Communication.InvalidResponseException.html"><span>Worldline\Acquiring\Sdk\Communication\InvalidResponseException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+							</table>
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_incrementPayment">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="createRefund" id="_createRefund">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-src.Worldline.Acquiring.Sdk.V1.Acquirer.Merchant.Payments.PaymentsClient.html#230-267" title="Go to source code">createRefund</a>(
+	<span>string <var>$paymentId</var></span>,
+	<span><a href="Worldline.Acquiring.Sdk.V1.Domain.ApiPaymentRefundRequest.html"><span title="Worldline\Acquiring\Sdk\V1\Domain\ApiPaymentRefundRequest">ApiPaymentRefundRequest</span></a> <var>$body</var></span>,
+	<span><a href="Worldline.Acquiring.Sdk.CallContext.html"><span title="Worldline\Acquiring\Sdk\CallContext">CallContext</span></a>|null <var>$callContext</var> = <span class="php-kw">null</span></span>,
+): <a href="Worldline.Acquiring.Sdk.V1.Domain.ApiActionResponseForRefund.html"><span title="Worldline\Acquiring\Sdk\V1\Domain\ApiActionResponseForRefund">ApiActionResponseForRefund</span></a></code>
+
+
+	<div class="expandable-collapsedView">
+		Resource /processing/v1/&#123;acquirerId}/&#123;merchantId}/payments/&#123;paymentId}/refunds - Refund payment
+	</div>
+
+	<div class="expandable-expandedView">
+	<div class="description"><p>Resource /processing/v1/{acquirerId}/{merchantId}/payments/{paymentId}/refunds - Refund payment</p>
+</div>
+
+
+
+							<h4>Throws</h4>
+							<table>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.V1.ValidationException.html"><span>Worldline\Acquiring\Sdk\V1\ValidationException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.V1.AuthorizationException.html"><span>Worldline\Acquiring\Sdk\V1\AuthorizationException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.V1.ReferenceException.html"><span>Worldline\Acquiring\Sdk\V1\ReferenceException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.V1.PlatformException.html"><span>Worldline\Acquiring\Sdk\V1\PlatformException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.V1.ApiException.html"><span>Worldline\Acquiring\Sdk\V1\ApiException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td><code><a href="Worldline.Acquiring.Sdk.Communication.InvalidResponseException.html"><span>Worldline\Acquiring\Sdk\Communication\InvalidResponseException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+							</table>
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_createRefund">#</a>
+		</td>
+	</tr>
+		</table>
+		<table class="table">
+			<tr>
+				<th class="table-heading">Methods inherited from <a href="Worldline.Acquiring.Sdk.ApiResource.html"><span>Worldline\Acquiring\Sdk\ApiResource</span></a></th>
+			</tr>
+			<tr>
+				<td class="table-cell">
+<code><a href="Worldline.Acquiring.Sdk.ApiResource.html#___construct">__construct()</a>, <a href="Worldline.Acquiring.Sdk.ApiResource.html#_getCommunicator">getCommunicator()</a>, <a href="Worldline.Acquiring.Sdk.ApiResource.html#_instantiateUri">instantiateUri()</a></code>				</td>
+			</tr>
+		</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<table class="table">
+			<tr>
+				<th class="table-heading">Properties inherited from <a href="Worldline.Acquiring.Sdk.ApiResource.html"><span>Worldline\Acquiring\Sdk\ApiResource</span></a></th>
+			</tr>
+			<tr>
+				<td class="table-cell">
+<code><var><a href="Worldline.Acquiring.Sdk.ApiResource.html#$context">$context</a></var></code>				</td>
+			</tr>
+		</table>
+
+
+
+
+
+
+		</div>
+
+		<div class="layout-footer">
+			Worldline Acquiring PHP SDK API documentation generated by <a href="https://www.apigen.org">ApiGen v7.0.0-alpha.4</a>
+		</div>
+	</div>
+
+	<div class="layout-rest">
+		<div class="navbar"></div>
+	</div>
+</body>
+</html>
