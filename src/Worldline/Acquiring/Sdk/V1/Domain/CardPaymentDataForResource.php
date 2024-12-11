@@ -18,11 +18,6 @@ class CardPaymentDataForResource extends DataObject
     public $brand = null;
 
     /**
-     * @var PointOfSaleData
-     */
-    public $pointOfSaleData = null;
-
-    /**
      * @return object
      */
     public function toObject()
@@ -30,9 +25,6 @@ class CardPaymentDataForResource extends DataObject
         $object = parent::toObject();
         if (!is_null($this->brand)) {
             $object->brand = $this->brand;
-        }
-        if (!is_null($this->pointOfSaleData)) {
-            $object->pointOfSaleData = $this->pointOfSaleData->toObject();
         }
         return $object;
     }
@@ -47,13 +39,6 @@ class CardPaymentDataForResource extends DataObject
         parent::fromObject($object);
         if (property_exists($object, 'brand')) {
             $this->brand = $object->brand;
-        }
-        if (property_exists($object, 'pointOfSaleData')) {
-            if (!is_object($object->pointOfSaleData)) {
-                throw new UnexpectedValueException('value \'' . print_r($object->pointOfSaleData, true) . '\' is not an object');
-            }
-            $value = new PointOfSaleData();
-            $this->pointOfSaleData = $value->fromObject($object->pointOfSaleData);
         }
         return $this;
     }

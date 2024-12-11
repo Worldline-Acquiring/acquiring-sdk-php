@@ -19,6 +19,16 @@ class ApiCaptureRequestForRefund extends DataObject
     public $operationId = null;
 
     /**
+     * @var PaymentReferences
+     */
+    public $references = null;
+
+    /**
+     * @var TerminalData
+     */
+    public $terminalData = null;
+
+    /**
      * @var DateTime
      */
     public $transactionTimestamp = null;
@@ -31,6 +41,12 @@ class ApiCaptureRequestForRefund extends DataObject
         $object = parent::toObject();
         if (!is_null($this->operationId)) {
             $object->operationId = $this->operationId;
+        }
+        if (!is_null($this->references)) {
+            $object->references = $this->references->toObject();
+        }
+        if (!is_null($this->terminalData)) {
+            $object->terminalData = $this->terminalData->toObject();
         }
         if (!is_null($this->transactionTimestamp)) {
             $object->transactionTimestamp = $this->transactionTimestamp->format('Y-m-d\\TH:i:s.vP');
@@ -48,6 +64,20 @@ class ApiCaptureRequestForRefund extends DataObject
         parent::fromObject($object);
         if (property_exists($object, 'operationId')) {
             $this->operationId = $object->operationId;
+        }
+        if (property_exists($object, 'references')) {
+            if (!is_object($object->references)) {
+                throw new UnexpectedValueException('value \'' . print_r($object->references, true) . '\' is not an object');
+            }
+            $value = new PaymentReferences();
+            $this->references = $value->fromObject($object->references);
+        }
+        if (property_exists($object, 'terminalData')) {
+            if (!is_object($object->terminalData)) {
+                throw new UnexpectedValueException('value \'' . print_r($object->terminalData, true) . '\' is not an object');
+            }
+            $value = new TerminalData();
+            $this->terminalData = $value->fromObject($object->terminalData);
         }
         if (property_exists($object, 'transactionTimestamp')) {
             $this->transactionTimestamp = new DateTime($object->transactionTimestamp);

@@ -11,12 +11,17 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 /**
  * @package Worldline\Acquiring\Sdk\V1\Domain
  */
-class ApiPaymentReversalRequest extends DataObject
+class ApiBalanceInquiryRequest extends DataObject
 {
     /**
-     * @var DccData
+     * @var CardPaymentDataForBalanceInquiry
      */
-    public $dynamicCurrencyConversion = null;
+    public $cardPaymentData = null;
+
+    /**
+     * @var MerchantData
+     */
+    public $merchant = null;
 
     /**
      * @var string
@@ -24,9 +29,9 @@ class ApiPaymentReversalRequest extends DataObject
     public $operationId = null;
 
     /**
-     * @var AmountData
+     * @var PaymentReferences
      */
-    public $reversalAmount = null;
+    public $references = null;
 
     /**
      * @var TerminalData
@@ -44,14 +49,17 @@ class ApiPaymentReversalRequest extends DataObject
     public function toObject()
     {
         $object = parent::toObject();
-        if (!is_null($this->dynamicCurrencyConversion)) {
-            $object->dynamicCurrencyConversion = $this->dynamicCurrencyConversion->toObject();
+        if (!is_null($this->cardPaymentData)) {
+            $object->cardPaymentData = $this->cardPaymentData->toObject();
+        }
+        if (!is_null($this->merchant)) {
+            $object->merchant = $this->merchant->toObject();
         }
         if (!is_null($this->operationId)) {
             $object->operationId = $this->operationId;
         }
-        if (!is_null($this->reversalAmount)) {
-            $object->reversalAmount = $this->reversalAmount->toObject();
+        if (!is_null($this->references)) {
+            $object->references = $this->references->toObject();
         }
         if (!is_null($this->terminalData)) {
             $object->terminalData = $this->terminalData->toObject();
@@ -70,22 +78,29 @@ class ApiPaymentReversalRequest extends DataObject
     public function fromObject($object)
     {
         parent::fromObject($object);
-        if (property_exists($object, 'dynamicCurrencyConversion')) {
-            if (!is_object($object->dynamicCurrencyConversion)) {
-                throw new UnexpectedValueException('value \'' . print_r($object->dynamicCurrencyConversion, true) . '\' is not an object');
+        if (property_exists($object, 'cardPaymentData')) {
+            if (!is_object($object->cardPaymentData)) {
+                throw new UnexpectedValueException('value \'' . print_r($object->cardPaymentData, true) . '\' is not an object');
             }
-            $value = new DccData();
-            $this->dynamicCurrencyConversion = $value->fromObject($object->dynamicCurrencyConversion);
+            $value = new CardPaymentDataForBalanceInquiry();
+            $this->cardPaymentData = $value->fromObject($object->cardPaymentData);
+        }
+        if (property_exists($object, 'merchant')) {
+            if (!is_object($object->merchant)) {
+                throw new UnexpectedValueException('value \'' . print_r($object->merchant, true) . '\' is not an object');
+            }
+            $value = new MerchantData();
+            $this->merchant = $value->fromObject($object->merchant);
         }
         if (property_exists($object, 'operationId')) {
             $this->operationId = $object->operationId;
         }
-        if (property_exists($object, 'reversalAmount')) {
-            if (!is_object($object->reversalAmount)) {
-                throw new UnexpectedValueException('value \'' . print_r($object->reversalAmount, true) . '\' is not an object');
+        if (property_exists($object, 'references')) {
+            if (!is_object($object->references)) {
+                throw new UnexpectedValueException('value \'' . print_r($object->references, true) . '\' is not an object');
             }
-            $value = new AmountData();
-            $this->reversalAmount = $value->fromObject($object->reversalAmount);
+            $value = new PaymentReferences();
+            $this->references = $value->fromObject($object->references);
         }
         if (property_exists($object, 'terminalData')) {
             if (!is_object($object->terminalData)) {

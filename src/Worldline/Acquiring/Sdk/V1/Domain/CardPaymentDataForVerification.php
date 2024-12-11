@@ -18,6 +18,11 @@ class CardPaymentDataForVerification extends DataObject
     public $brand = null;
 
     /**
+     * @var string
+     */
+    public $brandSelector = null;
+
+    /**
      * @var PlainCardData
      */
     public $cardData = null;
@@ -48,6 +53,11 @@ class CardPaymentDataForVerification extends DataObject
     public $networkTokenData = null;
 
     /**
+     * @var PointOfSaleData
+     */
+    public $pointOfSaleData = null;
+
+    /**
      * @var string
      */
     public $walletId = null;
@@ -60,6 +70,9 @@ class CardPaymentDataForVerification extends DataObject
         $object = parent::toObject();
         if (!is_null($this->brand)) {
             $object->brand = $this->brand;
+        }
+        if (!is_null($this->brandSelector)) {
+            $object->brandSelector = $this->brandSelector;
         }
         if (!is_null($this->cardData)) {
             $object->cardData = $this->cardData->toObject();
@@ -79,6 +92,9 @@ class CardPaymentDataForVerification extends DataObject
         if (!is_null($this->networkTokenData)) {
             $object->networkTokenData = $this->networkTokenData->toObject();
         }
+        if (!is_null($this->pointOfSaleData)) {
+            $object->pointOfSaleData = $this->pointOfSaleData->toObject();
+        }
         if (!is_null($this->walletId)) {
             $object->walletId = $this->walletId;
         }
@@ -95,6 +111,9 @@ class CardPaymentDataForVerification extends DataObject
         parent::fromObject($object);
         if (property_exists($object, 'brand')) {
             $this->brand = $object->brand;
+        }
+        if (property_exists($object, 'brandSelector')) {
+            $this->brandSelector = $object->brandSelector;
         }
         if (property_exists($object, 'cardData')) {
             if (!is_object($object->cardData)) {
@@ -129,6 +148,13 @@ class CardPaymentDataForVerification extends DataObject
             }
             $value = new NetworkTokenData();
             $this->networkTokenData = $value->fromObject($object->networkTokenData);
+        }
+        if (property_exists($object, 'pointOfSaleData')) {
+            if (!is_object($object->pointOfSaleData)) {
+                throw new UnexpectedValueException('value \'' . print_r($object->pointOfSaleData, true) . '\' is not an object');
+            }
+            $value = new PointOfSaleData();
+            $this->pointOfSaleData = $value->fromObject($object->pointOfSaleData);
         }
         if (property_exists($object, 'walletId')) {
             $this->walletId = $object->walletId;

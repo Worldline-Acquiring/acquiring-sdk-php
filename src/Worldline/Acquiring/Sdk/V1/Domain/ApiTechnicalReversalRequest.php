@@ -24,6 +24,11 @@ class ApiTechnicalReversalRequest extends DataObject
     public $reason = null;
 
     /**
+     * @var TerminalData
+     */
+    public $terminalData = null;
+
+    /**
      * @var DateTime
      */
     public $transactionTimestamp = null;
@@ -39,6 +44,9 @@ class ApiTechnicalReversalRequest extends DataObject
         }
         if (!is_null($this->reason)) {
             $object->reason = $this->reason;
+        }
+        if (!is_null($this->terminalData)) {
+            $object->terminalData = $this->terminalData->toObject();
         }
         if (!is_null($this->transactionTimestamp)) {
             $object->transactionTimestamp = $this->transactionTimestamp->format('Y-m-d\\TH:i:s.vP');
@@ -59,6 +67,13 @@ class ApiTechnicalReversalRequest extends DataObject
         }
         if (property_exists($object, 'reason')) {
             $this->reason = $object->reason;
+        }
+        if (property_exists($object, 'terminalData')) {
+            if (!is_object($object->terminalData)) {
+                throw new UnexpectedValueException('value \'' . print_r($object->terminalData, true) . '\' is not an object');
+            }
+            $value = new TerminalData();
+            $this->terminalData = $value->fromObject($object->terminalData);
         }
         if (property_exists($object, 'transactionTimestamp')) {
             $this->transactionTimestamp = new DateTime($object->transactionTimestamp);

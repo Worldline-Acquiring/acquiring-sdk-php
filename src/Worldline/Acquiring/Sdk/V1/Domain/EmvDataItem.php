@@ -10,17 +10,17 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 /**
  * @package Worldline\Acquiring\Sdk\V1\Domain
  */
-class PaymentReferences extends DataObject
+class EmvDataItem extends DataObject
 {
     /**
      * @var string
      */
-    public $dynamicDescriptor = null;
+    public $tag = null;
 
     /**
      * @var string
      */
-    public $merchantReference = null;
+    public $value = null;
 
     /**
      * @return object
@@ -28,11 +28,11 @@ class PaymentReferences extends DataObject
     public function toObject()
     {
         $object = parent::toObject();
-        if (!is_null($this->dynamicDescriptor)) {
-            $object->dynamicDescriptor = $this->dynamicDescriptor;
+        if (!is_null($this->tag)) {
+            $object->tag = $this->tag;
         }
-        if (!is_null($this->merchantReference)) {
-            $object->merchantReference = $this->merchantReference;
+        if (!is_null($this->value)) {
+            $object->value = $this->value;
         }
         return $object;
     }
@@ -45,11 +45,11 @@ class PaymentReferences extends DataObject
     public function fromObject($object)
     {
         parent::fromObject($object);
-        if (property_exists($object, 'dynamicDescriptor')) {
-            $this->dynamicDescriptor = $object->dynamicDescriptor;
+        if (property_exists($object, 'tag')) {
+            $this->tag = $object->tag;
         }
-        if (property_exists($object, 'merchantReference')) {
-            $this->merchantReference = $object->merchantReference;
+        if (property_exists($object, 'value')) {
+            $this->value = $object->value;
         }
         return $this;
     }

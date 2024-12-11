@@ -28,6 +28,11 @@ class CardDataForDcc extends DataObject
     public $cardCountryCode = null;
 
     /**
+     * @var string
+     */
+    public $cardEntryMode = null;
+
+    /**
      * @return object
      */
     public function toObject()
@@ -41,6 +46,9 @@ class CardDataForDcc extends DataObject
         }
         if (!is_null($this->cardCountryCode)) {
             $object->cardCountryCode = $this->cardCountryCode;
+        }
+        if (!is_null($this->cardEntryMode)) {
+            $object->cardEntryMode = $this->cardEntryMode;
         }
         return $object;
     }
@@ -61,6 +69,9 @@ class CardDataForDcc extends DataObject
         }
         if (property_exists($object, 'cardCountryCode')) {
             $this->cardCountryCode = $object->cardCountryCode;
+        }
+        if (property_exists($object, 'cardEntryMode')) {
+            $this->cardEntryMode = $object->cardEntryMode;
         }
         return $this;
     }

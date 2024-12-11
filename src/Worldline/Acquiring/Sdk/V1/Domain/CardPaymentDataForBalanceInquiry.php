@@ -10,7 +10,7 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 /**
  * @package Worldline\Acquiring\Sdk\V1\Domain
  */
-class CardPaymentDataForRefund extends DataObject
+class CardPaymentDataForBalanceInquiry extends DataObject
 {
     /**
      * @var string
@@ -21,11 +21,6 @@ class CardPaymentDataForRefund extends DataObject
      * @var string
      */
     public $brandSelector = null;
-
-    /**
-     * @var bool
-     */
-    public $captureImmediately = null;
 
     /**
      * @var PlainCardData
@@ -43,9 +38,14 @@ class CardPaymentDataForRefund extends DataObject
     public $cardholderVerificationMethod = null;
 
     /**
-     * @var NetworkTokenData
+     * @var ECommerceData
      */
-    public $networkTokenData = null;
+    public $ecommerceData = null;
+
+    /**
+     * @var PointOfSaleData
+     */
+    public $pointOfSaleData = null;
 
     /**
      * @var string
@@ -64,9 +64,6 @@ class CardPaymentDataForRefund extends DataObject
         if (!is_null($this->brandSelector)) {
             $object->brandSelector = $this->brandSelector;
         }
-        if (!is_null($this->captureImmediately)) {
-            $object->captureImmediately = $this->captureImmediately;
-        }
         if (!is_null($this->cardData)) {
             $object->cardData = $this->cardData->toObject();
         }
@@ -76,8 +73,11 @@ class CardPaymentDataForRefund extends DataObject
         if (!is_null($this->cardholderVerificationMethod)) {
             $object->cardholderVerificationMethod = $this->cardholderVerificationMethod;
         }
-        if (!is_null($this->networkTokenData)) {
-            $object->networkTokenData = $this->networkTokenData->toObject();
+        if (!is_null($this->ecommerceData)) {
+            $object->ecommerceData = $this->ecommerceData->toObject();
+        }
+        if (!is_null($this->pointOfSaleData)) {
+            $object->pointOfSaleData = $this->pointOfSaleData->toObject();
         }
         if (!is_null($this->walletId)) {
             $object->walletId = $this->walletId;
@@ -99,9 +99,6 @@ class CardPaymentDataForRefund extends DataObject
         if (property_exists($object, 'brandSelector')) {
             $this->brandSelector = $object->brandSelector;
         }
-        if (property_exists($object, 'captureImmediately')) {
-            $this->captureImmediately = $object->captureImmediately;
-        }
         if (property_exists($object, 'cardData')) {
             if (!is_object($object->cardData)) {
                 throw new UnexpectedValueException('value \'' . print_r($object->cardData, true) . '\' is not an object');
@@ -115,12 +112,19 @@ class CardPaymentDataForRefund extends DataObject
         if (property_exists($object, 'cardholderVerificationMethod')) {
             $this->cardholderVerificationMethod = $object->cardholderVerificationMethod;
         }
-        if (property_exists($object, 'networkTokenData')) {
-            if (!is_object($object->networkTokenData)) {
-                throw new UnexpectedValueException('value \'' . print_r($object->networkTokenData, true) . '\' is not an object');
+        if (property_exists($object, 'ecommerceData')) {
+            if (!is_object($object->ecommerceData)) {
+                throw new UnexpectedValueException('value \'' . print_r($object->ecommerceData, true) . '\' is not an object');
             }
-            $value = new NetworkTokenData();
-            $this->networkTokenData = $value->fromObject($object->networkTokenData);
+            $value = new ECommerceData();
+            $this->ecommerceData = $value->fromObject($object->ecommerceData);
+        }
+        if (property_exists($object, 'pointOfSaleData')) {
+            if (!is_object($object->pointOfSaleData)) {
+                throw new UnexpectedValueException('value \'' . print_r($object->pointOfSaleData, true) . '\' is not an object');
+            }
+            $value = new PointOfSaleData();
+            $this->pointOfSaleData = $value->fromObject($object->pointOfSaleData);
         }
         if (property_exists($object, 'walletId')) {
             $this->walletId = $object->walletId;

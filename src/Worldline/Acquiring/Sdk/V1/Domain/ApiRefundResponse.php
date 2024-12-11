@@ -24,6 +24,11 @@ class ApiRefundResponse extends DataObject
     public $cardPaymentData = null;
 
     /**
+     * @var EmvDataItem[]
+     */
+    public $emvData = null;
+
+    /**
      * @var string
      */
     public $operationId = null;
@@ -95,6 +100,14 @@ class ApiRefundResponse extends DataObject
         if (!is_null($this->cardPaymentData)) {
             $object->cardPaymentData = $this->cardPaymentData->toObject();
         }
+        if (!is_null($this->emvData)) {
+            $object->emvData = [];
+            foreach ($this->emvData as $element) {
+                if (!is_null($element)) {
+                    $object->emvData[] = $element->toObject();
+                }
+            }
+        }
         if (!is_null($this->operationId)) {
             $object->operationId = $this->operationId;
         }
@@ -151,6 +164,16 @@ class ApiRefundResponse extends DataObject
             }
             $value = new CardPaymentDataForResource();
             $this->cardPaymentData = $value->fromObject($object->cardPaymentData);
+        }
+        if (property_exists($object, 'emvData')) {
+            if (!is_array($object->emvData) && !is_object($object->emvData)) {
+                throw new UnexpectedValueException('value \'' . print_r($object->emvData, true) . '\' is not an array or object');
+            }
+            $this->emvData = [];
+            foreach ($object->emvData as $element) {
+                $value = new EmvDataItem();
+                $this->emvData[] = $value->fromObject($element);
+            }
         }
         if (property_exists($object, 'operationId')) {
             $this->operationId = $object->operationId;

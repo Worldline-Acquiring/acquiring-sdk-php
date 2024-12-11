@@ -6,6 +6,7 @@ namespace Worldline\Acquiring\Sdk\V1\Acquirer\Merchant;
 
 use Worldline\Acquiring\Sdk\ApiResource;
 use Worldline\Acquiring\Sdk\V1\Acquirer\Merchant\Accountverifications\AccountVerificationsClient;
+use Worldline\Acquiring\Sdk\V1\Acquirer\Merchant\Balanceinquiries\BalanceInquiriesClient;
 use Worldline\Acquiring\Sdk\V1\Acquirer\Merchant\Dynamiccurrencyconversion\DynamicCurrencyConversionClient;
 use Worldline\Acquiring\Sdk\V1\Acquirer\Merchant\Payments\PaymentsClient;
 use Worldline\Acquiring\Sdk\V1\Acquirer\Merchant\Refunds\RefundsClient;
@@ -44,6 +45,16 @@ class MerchantClient extends ApiResource
     public function accountVerifications()
     {
         return new AccountVerificationsClient($this, $this->context);
+    }
+
+    /**
+     * Resource /processing/v1/{acquirerId}/{merchantId}/balance-inquiries
+     *
+     * @return BalanceInquiriesClient
+     */
+    public function balanceInquiries()
+    {
+        return new BalanceInquiriesClient($this, $this->context);
     }
 
     /**

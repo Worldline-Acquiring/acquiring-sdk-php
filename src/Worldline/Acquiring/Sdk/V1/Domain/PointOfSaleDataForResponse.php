@@ -10,17 +10,17 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 /**
  * @package Worldline\Acquiring\Sdk\V1\Domain
  */
-class PaymentReferences extends DataObject
+class PointOfSaleDataForResponse extends DataObject
 {
     /**
      * @var string
      */
-    public $dynamicDescriptor = null;
+    public $panLast4Digits = null;
 
     /**
-     * @var string
+     * @var int
      */
-    public $merchantReference = null;
+    public $pinRetryCounter = null;
 
     /**
      * @return object
@@ -28,11 +28,11 @@ class PaymentReferences extends DataObject
     public function toObject()
     {
         $object = parent::toObject();
-        if (!is_null($this->dynamicDescriptor)) {
-            $object->dynamicDescriptor = $this->dynamicDescriptor;
+        if (!is_null($this->panLast4Digits)) {
+            $object->panLast4Digits = $this->panLast4Digits;
         }
-        if (!is_null($this->merchantReference)) {
-            $object->merchantReference = $this->merchantReference;
+        if (!is_null($this->pinRetryCounter)) {
+            $object->pinRetryCounter = $this->pinRetryCounter;
         }
         return $object;
     }
@@ -45,11 +45,11 @@ class PaymentReferences extends DataObject
     public function fromObject($object)
     {
         parent::fromObject($object);
-        if (property_exists($object, 'dynamicDescriptor')) {
-            $this->dynamicDescriptor = $object->dynamicDescriptor;
+        if (property_exists($object, 'panLast4Digits')) {
+            $this->panLast4Digits = $object->panLast4Digits;
         }
-        if (property_exists($object, 'merchantReference')) {
-            $this->merchantReference = $object->merchantReference;
+        if (property_exists($object, 'pinRetryCounter')) {
+            $this->pinRetryCounter = $object->pinRetryCounter;
         }
         return $this;
     }

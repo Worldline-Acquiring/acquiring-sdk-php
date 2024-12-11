@@ -23,7 +23,7 @@ class CardPaymentDataForResponse extends DataObject
     public $ecommerceData = null;
 
     /**
-     * @var PointOfSaleData
+     * @var PointOfSaleDataForResponse
      */
     public $pointOfSaleData = null;
 
@@ -67,7 +67,7 @@ class CardPaymentDataForResponse extends DataObject
             if (!is_object($object->pointOfSaleData)) {
                 throw new UnexpectedValueException('value \'' . print_r($object->pointOfSaleData, true) . '\' is not an object');
             }
-            $value = new PointOfSaleData();
+            $value = new PointOfSaleDataForResponse();
             $this->pointOfSaleData = $value->fromObject($object->pointOfSaleData);
         }
         return $this;

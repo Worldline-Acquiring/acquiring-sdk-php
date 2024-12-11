@@ -23,6 +23,11 @@ class CardPaymentData extends DataObject
     public $brand = null;
 
     /**
+     * @var string
+     */
+    public $brandSelector = null;
+
+    /**
      * @var bool
      */
     public $captureImmediately = null;
@@ -79,6 +84,9 @@ class CardPaymentData extends DataObject
         if (!is_null($this->brand)) {
             $object->brand = $this->brand;
         }
+        if (!is_null($this->brandSelector)) {
+            $object->brandSelector = $this->brandSelector;
+        }
         if (!is_null($this->captureImmediately)) {
             $object->captureImmediately = $this->captureImmediately;
         }
@@ -122,6 +130,9 @@ class CardPaymentData extends DataObject
         }
         if (property_exists($object, 'brand')) {
             $this->brand = $object->brand;
+        }
+        if (property_exists($object, 'brandSelector')) {
+            $this->brandSelector = $object->brandSelector;
         }
         if (property_exists($object, 'captureImmediately')) {
             $this->captureImmediately = $object->captureImmediately;

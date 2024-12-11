@@ -49,6 +49,11 @@ class ApiPaymentRequest extends DataObject
     public $references = null;
 
     /**
+     * @var TerminalData
+     */
+    public $terminalData = null;
+
+    /**
      * @var DateTime
      */
     public $transactionTimestamp = null;
@@ -79,6 +84,9 @@ class ApiPaymentRequest extends DataObject
         }
         if (!is_null($this->references)) {
             $object->references = $this->references->toObject();
+        }
+        if (!is_null($this->terminalData)) {
+            $object->terminalData = $this->terminalData->toObject();
         }
         if (!is_null($this->transactionTimestamp)) {
             $object->transactionTimestamp = $this->transactionTimestamp->format('Y-m-d\\TH:i:s.vP');
@@ -134,6 +142,13 @@ class ApiPaymentRequest extends DataObject
             }
             $value = new PaymentReferences();
             $this->references = $value->fromObject($object->references);
+        }
+        if (property_exists($object, 'terminalData')) {
+            if (!is_object($object->terminalData)) {
+                throw new UnexpectedValueException('value \'' . print_r($object->terminalData, true) . '\' is not an object');
+            }
+            $value = new TerminalData();
+            $this->terminalData = $value->fromObject($object->terminalData);
         }
         if (property_exists($object, 'transactionTimestamp')) {
             $this->transactionTimestamp = new DateTime($object->transactionTimestamp);

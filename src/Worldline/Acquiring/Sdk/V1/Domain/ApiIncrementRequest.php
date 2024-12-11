@@ -29,6 +29,11 @@ class ApiIncrementRequest extends DataObject
     public $operationId = null;
 
     /**
+     * @var TerminalData
+     */
+    public $terminalData = null;
+
+    /**
      * @var DateTime
      */
     public $transactionTimestamp = null;
@@ -47,6 +52,9 @@ class ApiIncrementRequest extends DataObject
         }
         if (!is_null($this->operationId)) {
             $object->operationId = $this->operationId;
+        }
+        if (!is_null($this->terminalData)) {
+            $object->terminalData = $this->terminalData->toObject();
         }
         if (!is_null($this->transactionTimestamp)) {
             $object->transactionTimestamp = $this->transactionTimestamp->format('Y-m-d\\TH:i:s.vP');
@@ -78,6 +86,13 @@ class ApiIncrementRequest extends DataObject
         }
         if (property_exists($object, 'operationId')) {
             $this->operationId = $object->operationId;
+        }
+        if (property_exists($object, 'terminalData')) {
+            if (!is_object($object->terminalData)) {
+                throw new UnexpectedValueException('value \'' . print_r($object->terminalData, true) . '\' is not an object');
+            }
+            $value = new TerminalData();
+            $this->terminalData = $value->fromObject($object->terminalData);
         }
         if (property_exists($object, 'transactionTimestamp')) {
             $this->transactionTimestamp = new DateTime($object->transactionTimestamp);
