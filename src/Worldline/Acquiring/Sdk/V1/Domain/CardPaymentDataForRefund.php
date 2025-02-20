@@ -48,6 +48,11 @@ class CardPaymentDataForRefund extends DataObject
     public $networkTokenData = null;
 
     /**
+     * @var PointOfSaleData
+     */
+    public $pointOfSaleData = null;
+
+    /**
      * @var string
      */
     public $walletId = null;
@@ -78,6 +83,9 @@ class CardPaymentDataForRefund extends DataObject
         }
         if (!is_null($this->networkTokenData)) {
             $object->networkTokenData = $this->networkTokenData->toObject();
+        }
+        if (!is_null($this->pointOfSaleData)) {
+            $object->pointOfSaleData = $this->pointOfSaleData->toObject();
         }
         if (!is_null($this->walletId)) {
             $object->walletId = $this->walletId;
@@ -121,6 +129,13 @@ class CardPaymentDataForRefund extends DataObject
             }
             $value = new NetworkTokenData();
             $this->networkTokenData = $value->fromObject($object->networkTokenData);
+        }
+        if (property_exists($object, 'pointOfSaleData')) {
+            if (!is_object($object->pointOfSaleData)) {
+                throw new UnexpectedValueException('value \'' . print_r($object->pointOfSaleData, true) . '\' is not an object');
+            }
+            $value = new PointOfSaleData();
+            $this->pointOfSaleData = $value->fromObject($object->pointOfSaleData);
         }
         if (property_exists($object, 'walletId')) {
             $this->walletId = $object->walletId;

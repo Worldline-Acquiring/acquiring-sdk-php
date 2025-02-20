@@ -21,7 +21,7 @@ class OAuth2Authenticator implements Authenticator
     private const TOKEN_TYPES = [
         '' => [
             'processing_payment', 'processing_refund', 'processing_credittransfer', 'processing_accountverification',
-            'processing_operation_reverse', 'processing_dcc_rate', 'services_ping'
+            'processing_balanceinquiry', 'processing_operation_reverse', 'processing_dcc_rate', 'services_ping'
         ],
     ];
 
@@ -73,8 +73,8 @@ class OAuth2Authenticator implements Authenticator
 
         $startTime = time();
 
-        $requestHeaders = array();
-        $requestHeaders['Content-Type'] = 'application/x-www-form-urlencoded';
+        $oauth2RequestHeaders = array();
+        $oauth2RequestHeaders['Content-Type'] = 'application/x-www-form-urlencoded';
 
         $requestBody = sprintf('grant_type=client_credentials&client_id=%s&client_secret=%s&scope=%s', $this->oauth2ClientId, $this->oauth2ClientSecret, self::getScopes($tokenType));
 
@@ -86,7 +86,7 @@ class OAuth2Authenticator implements Authenticator
         };
 
         $connection = $this->createConnection();
-        $connection->post($this->oauth2TokenUri, $requestHeaders, $requestBody, $responseHandler);
+        $connection->post($this->oauth2TokenUri, $oauth2RequestHeaders, $requestBody, $responseHandler);
 
         $response = $responseBuilder->getResponse();
 

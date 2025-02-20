@@ -13,10 +13,10 @@ use Worldline\Acquiring\Sdk\V1\ApiException;
 use Worldline\Acquiring\Sdk\V1\AuthorizationException;
 use Worldline\Acquiring\Sdk\V1\Domain\ApiActionResponseForRefund;
 use Worldline\Acquiring\Sdk\V1\Domain\ApiCaptureRequestForRefund;
-use Worldline\Acquiring\Sdk\V1\Domain\ApiPaymentReversalRequest;
 use Worldline\Acquiring\Sdk\V1\Domain\ApiRefundRequest;
 use Worldline\Acquiring\Sdk\V1\Domain\ApiRefundResource;
 use Worldline\Acquiring\Sdk\V1\Domain\ApiRefundResponse;
+use Worldline\Acquiring\Sdk\V1\Domain\ApiRefundReversalRequest;
 use Worldline\Acquiring\Sdk\V1\ExceptionFactory;
 use Worldline\Acquiring\Sdk\V1\PlatformException;
 use Worldline\Acquiring\Sdk\V1\ReferenceException;
@@ -148,7 +148,7 @@ class RefundsClient extends ApiResource
      * Resource /processing/v1/{acquirerId}/{merchantId}/refunds/{refundId}/authorization-reversals - Reverse refund authorization
      *
      * @param string $refundId
-     * @param ApiPaymentReversalRequest $body
+     * @param ApiRefundReversalRequest $body
      * @param CallContext|null $callContext
      * @return ApiActionResponseForRefund
      *
@@ -160,7 +160,7 @@ class RefundsClient extends ApiResource
      * @throws InvalidResponseException
      * @link https://docs.acquiring.worldline-solutions.com/api-reference#tag/Refunds/operation/reverseRefundAuthorization Reverse refund authorization
      */
-    public function reverseRefundAuthorization($refundId, ApiPaymentReversalRequest $body, CallContext $callContext = null)
+    public function reverseRefundAuthorization($refundId, ApiRefundReversalRequest $body, CallContext $callContext = null)
     {
         $this->context['refundId'] = $refundId;
         $responseClassMap = new ResponseClassMap();

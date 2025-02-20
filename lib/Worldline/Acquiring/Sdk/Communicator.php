@@ -92,7 +92,7 @@ class Communicator
         $relativeUriPathWithRequestParameters =
             $this->getRelativeUriPathWithRequestParameters($relativeUriPath, $requestParameters);
         $requestHeaders =
-            $this->getRequestHeaders('GET', $relativeUriPathWithRequestParameters, static::MIME_APPLICATION_JSON, $callContext);
+            $this->getRequestHeaders('GET', $relativeUriPathWithRequestParameters, null, $callContext);
 
         $responseBuilder = new ResponseBuilder();
         $responseHandler = function ($httpStatusCode, $data, $headers) use ($responseBuilder) {
@@ -134,7 +134,7 @@ class Communicator
         $relativeUriPathWithRequestParameters =
             $this->getRelativeUriPathWithRequestParameters($relativeUriPath, $requestParameters);
         $requestHeaders =
-            $this->getRequestHeaders('GET', $relativeUriPathWithRequestParameters, static::MIME_APPLICATION_JSON, $callContext);
+            $this->getRequestHeaders('GET', $relativeUriPathWithRequestParameters, null, $callContext);
 
         $responseBuilder = new ResponseBuilder();
         $responseHandler = function ($httpStatusCode, $data, $headers) use ($responseBuilder, $bodyHandler) {
@@ -178,7 +178,7 @@ class Communicator
         $relativeUriPathWithRequestParameters =
             $this->getRelativeUriPathWithRequestParameters($relativeUriPath, $requestParameters);
         $requestHeaders =
-            $this->getRequestHeaders('DELETE', $relativeUriPathWithRequestParameters, static::MIME_APPLICATION_JSON, $callContext);
+            $this->getRequestHeaders('DELETE', $relativeUriPathWithRequestParameters, null, $callContext);
 
         $responseBuilder = new ResponseBuilder();
         $responseHandler = function ($httpStatusCode, $data, $headers) use ($responseBuilder) {
@@ -220,7 +220,7 @@ class Communicator
         $relativeUriPathWithRequestParameters =
             $this->getRelativeUriPathWithRequestParameters($relativeUriPath, $requestParameters);
         $requestHeaders =
-            $this->getRequestHeaders('DELETE', $relativeUriPathWithRequestParameters, static::MIME_APPLICATION_JSON, $callContext);
+            $this->getRequestHeaders('DELETE', $relativeUriPathWithRequestParameters, null, $callContext);
 
         $responseBuilder = new ResponseBuilder();
         $responseHandler = function ($httpStatusCode, $data, $headers) use ($responseBuilder, $bodyHandler) {
@@ -268,11 +268,11 @@ class Communicator
         if ($requestBodyObject instanceof MultipartFormDataObject) {
             $contentType = $requestBodyObject->getContentType();
             $requestBody = $requestBodyObject;
-        } else if ($requestBodyObject instanceof MultipartDataObject) {
+        } elseif ($requestBodyObject instanceof MultipartDataObject) {
             $multipart = $requestBodyObject->toMultipartFormDataObject();
             $contentType = $multipart->getContentType();
             $requestBody = $multipart;
-        } else if ($requestBodyObject instanceof DataObject || is_null($requestBodyObject)) {
+        } elseif ($requestBodyObject instanceof DataObject || is_null($requestBodyObject)) {
             $contentType = static::MIME_APPLICATION_JSON;
             $requestBody = $requestBodyObject ? $requestBodyObject->toJson() : '';
         } else {
@@ -326,11 +326,11 @@ class Communicator
         if ($requestBodyObject instanceof MultipartFormDataObject) {
             $contentType = $requestBodyObject->getContentType();
             $requestBody = $requestBodyObject;
-        } else if ($requestBodyObject instanceof MultipartDataObject) {
+        } elseif ($requestBodyObject instanceof MultipartDataObject) {
             $multipart = $requestBodyObject->toMultipartFormDataObject();
             $contentType = $multipart->getContentType();
             $requestBody = $multipart;
-        } else if ($requestBodyObject instanceof DataObject || is_null($requestBodyObject)) {
+        } elseif ($requestBodyObject instanceof DataObject || is_null($requestBodyObject)) {
             $contentType = static::MIME_APPLICATION_JSON;
             $requestBody = $requestBodyObject ? $requestBodyObject->toJson() : '';
         } else {
@@ -386,11 +386,11 @@ class Communicator
         if ($requestBodyObject instanceof MultipartFormDataObject) {
             $contentType = $requestBodyObject->getContentType();
             $requestBody = $requestBodyObject;
-        } else if ($requestBodyObject instanceof MultipartDataObject) {
+        } elseif ($requestBodyObject instanceof MultipartDataObject) {
             $multipart = $requestBodyObject->toMultipartFormDataObject();
             $contentType = $multipart->getContentType();
             $requestBody = $multipart;
-        } else if ($requestBodyObject instanceof DataObject || is_null($requestBodyObject)) {
+        } elseif ($requestBodyObject instanceof DataObject || is_null($requestBodyObject)) {
             $contentType = static::MIME_APPLICATION_JSON;
             $requestBody = $requestBodyObject ? $requestBodyObject->toJson() : '';
         } else {
@@ -444,11 +444,11 @@ class Communicator
         if ($requestBodyObject instanceof MultipartFormDataObject) {
             $contentType = $requestBodyObject->getContentType();
             $requestBody = $requestBodyObject;
-        } else if ($requestBodyObject instanceof MultipartDataObject) {
+        } elseif ($requestBodyObject instanceof MultipartDataObject) {
             $multipart = $requestBodyObject->toMultipartFormDataObject();
             $contentType = $multipart->getContentType();
             $requestBody = $multipart;
-        } else if ($requestBodyObject instanceof DataObject || is_null($requestBodyObject)) {
+        } elseif ($requestBodyObject instanceof DataObject || is_null($requestBodyObject)) {
             $contentType = static::MIME_APPLICATION_JSON;
             $requestBody = $requestBodyObject ? $requestBodyObject->toJson() : '';
         } else {
@@ -508,7 +508,7 @@ class Communicator
     /**
      * @param string $httpMethod
      * @param string $relativeUriPathWithRequestParameters
-     * @param string $contentType
+     * @param string|null $contentType
      * @param CallContext|null $callContext
      * @return string[]
      */
@@ -520,7 +520,9 @@ class Communicator
     ) {
         $rfc2616Date = self::getRfc161Date();
         $requestHeaders = array();
-        $requestHeaders['Content-Type'] = $contentType;
+        if ($contentType) {
+            $requestHeaders['Content-Type'] = $contentType;
+        }
         $requestHeaders['Date'] = $rfc2616Date;
         $requestHeaders['X-WL-ServerMetaInfo'] = $this->metadataProvider->getServerMetaInfoValue();
         // no context specific headers at this time
