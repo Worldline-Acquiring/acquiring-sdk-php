@@ -41,11 +41,6 @@ class ApiPaymentResource extends DataObject
     /**
      * @var string
      */
-    public $retryAfter = null;
-
-    /**
-     * @var string
-     */
     public $status = null;
 
     /**
@@ -83,9 +78,6 @@ class ApiPaymentResource extends DataObject
         }
         if (!is_null($this->references)) {
             $object->references = $this->references->toObject();
-        }
-        if (!is_null($this->retryAfter)) {
-            $object->retryAfter = $this->retryAfter;
         }
         if (!is_null($this->status)) {
             $object->status = $this->status;
@@ -136,9 +128,6 @@ class ApiPaymentResource extends DataObject
             }
             $value = new ApiReferencesForResponses();
             $this->references = $value->fromObject($object->references);
-        }
-        if (property_exists($object, 'retryAfter')) {
-            $this->retryAfter = $object->retryAfter;
         }
         if (property_exists($object, 'status')) {
             $this->status = $object->status;

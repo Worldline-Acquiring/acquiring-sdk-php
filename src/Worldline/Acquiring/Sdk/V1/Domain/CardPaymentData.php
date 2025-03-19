@@ -68,6 +68,11 @@ class CardPaymentData extends DataObject
     public $pointOfSaleData = null;
 
     /**
+     * @var ServiceLocationData
+     */
+    public $serviceLocationData = null;
+
+    /**
      * @var string
      */
     public $walletId = null;
@@ -110,6 +115,9 @@ class CardPaymentData extends DataObject
         }
         if (!is_null($this->pointOfSaleData)) {
             $object->pointOfSaleData = $this->pointOfSaleData->toObject();
+        }
+        if (!is_null($this->serviceLocationData)) {
+            $object->serviceLocationData = $this->serviceLocationData->toObject();
         }
         if (!is_null($this->walletId)) {
             $object->walletId = $this->walletId;
@@ -177,6 +185,13 @@ class CardPaymentData extends DataObject
             }
             $value = new PointOfSaleData();
             $this->pointOfSaleData = $value->fromObject($object->pointOfSaleData);
+        }
+        if (property_exists($object, 'serviceLocationData')) {
+            if (!is_object($object->serviceLocationData)) {
+                throw new UnexpectedValueException('value \'' . print_r($object->serviceLocationData, true) . '\' is not an object');
+            }
+            $value = new ServiceLocationData();
+            $this->serviceLocationData = $value->fromObject($object->serviceLocationData);
         }
         if (property_exists($object, 'walletId')) {
             $this->walletId = $object->walletId;

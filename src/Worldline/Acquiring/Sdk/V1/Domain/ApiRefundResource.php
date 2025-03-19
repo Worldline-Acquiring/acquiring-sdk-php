@@ -46,11 +46,6 @@ class ApiRefundResource extends DataObject
     /**
      * @var string
      */
-    public $retryAfter = null;
-
-    /**
-     * @var string
-     */
     public $status = null;
 
     /**
@@ -91,9 +86,6 @@ class ApiRefundResource extends DataObject
         }
         if (!is_null($this->refundId)) {
             $object->refundId = $this->refundId;
-        }
-        if (!is_null($this->retryAfter)) {
-            $object->retryAfter = $this->retryAfter;
         }
         if (!is_null($this->status)) {
             $object->status = $this->status;
@@ -147,9 +139,6 @@ class ApiRefundResource extends DataObject
         }
         if (property_exists($object, 'refundId')) {
             $this->refundId = $object->refundId;
-        }
-        if (property_exists($object, 'retryAfter')) {
-            $this->retryAfter = $object->retryAfter;
         }
         if (property_exists($object, 'status')) {
             $this->status = $object->status;

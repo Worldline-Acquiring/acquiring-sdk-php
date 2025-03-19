@@ -49,11 +49,6 @@ class SubOperationForRefund extends DataObject
     public $responseCodeDescription = null;
 
     /**
-     * @var string
-     */
-    public $retryAfter = null;
-
-    /**
      * @return object
      */
     public function toObject()
@@ -79,9 +74,6 @@ class SubOperationForRefund extends DataObject
         }
         if (!is_null($this->responseCodeDescription)) {
             $object->responseCodeDescription = $this->responseCodeDescription;
-        }
-        if (!is_null($this->retryAfter)) {
-            $object->retryAfter = $this->retryAfter;
         }
         return $object;
     }
@@ -118,9 +110,6 @@ class SubOperationForRefund extends DataObject
         }
         if (property_exists($object, 'responseCodeDescription')) {
             $this->responseCodeDescription = $object->responseCodeDescription;
-        }
-        if (property_exists($object, 'retryAfter')) {
-            $this->retryAfter = $object->retryAfter;
         }
         return $this;
     }

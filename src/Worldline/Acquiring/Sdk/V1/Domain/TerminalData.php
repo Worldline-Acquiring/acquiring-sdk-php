@@ -33,6 +33,16 @@ class TerminalData extends DataObject
     public $isAttendedTerminal = null;
 
     /**
+     * @var bool
+     */
+    public $isOfflineApproved = null;
+
+    /**
+     * @var string
+     */
+    public $offlineAuthorizationResponseCode = null;
+
+    /**
      * @var string
      */
     public $pinEntryCapability = null;
@@ -69,6 +79,12 @@ class TerminalData extends DataObject
         }
         if (!is_null($this->isAttendedTerminal)) {
             $object->isAttendedTerminal = $this->isAttendedTerminal;
+        }
+        if (!is_null($this->isOfflineApproved)) {
+            $object->isOfflineApproved = $this->isOfflineApproved;
+        }
+        if (!is_null($this->offlineAuthorizationResponseCode)) {
+            $object->offlineAuthorizationResponseCode = $this->offlineAuthorizationResponseCode;
         }
         if (!is_null($this->pinEntryCapability)) {
             $object->pinEntryCapability = $this->pinEntryCapability;
@@ -107,6 +123,12 @@ class TerminalData extends DataObject
         }
         if (property_exists($object, 'isAttendedTerminal')) {
             $this->isAttendedTerminal = $object->isAttendedTerminal;
+        }
+        if (property_exists($object, 'isOfflineApproved')) {
+            $this->isOfflineApproved = $object->isOfflineApproved;
+        }
+        if (property_exists($object, 'offlineAuthorizationResponseCode')) {
+            $this->offlineAuthorizationResponseCode = $object->offlineAuthorizationResponseCode;
         }
         if (property_exists($object, 'pinEntryCapability')) {
             $this->pinEntryCapability = $object->pinEntryCapability;

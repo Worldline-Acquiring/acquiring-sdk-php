@@ -13,6 +13,11 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class ApiAccountVerificationResponse extends DataObject
 {
     /**
+     * @var AdditionalResponseData
+     */
+    public $additionalResponseData = null;
+
+    /**
      * @var string
      */
     public $authorizationCode = null;
@@ -58,6 +63,9 @@ class ApiAccountVerificationResponse extends DataObject
     public function toObject()
     {
         $object = parent::toObject();
+        if (!is_null($this->additionalResponseData)) {
+            $object->additionalResponseData = $this->additionalResponseData->toObject();
+        }
         if (!is_null($this->authorizationCode)) {
             $object->authorizationCode = $this->authorizationCode;
         }
@@ -93,6 +101,13 @@ class ApiAccountVerificationResponse extends DataObject
     public function fromObject($object)
     {
         parent::fromObject($object);
+        if (property_exists($object, 'additionalResponseData')) {
+            if (!is_object($object->additionalResponseData)) {
+                throw new UnexpectedValueException('value \'' . print_r($object->additionalResponseData, true) . '\' is not an object');
+            }
+            $value = new AdditionalResponseData();
+            $this->additionalResponseData = $value->fromObject($object->additionalResponseData);
+        }
         if (property_exists($object, 'authorizationCode')) {
             $this->authorizationCode = $object->authorizationCode;
         }

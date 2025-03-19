@@ -93,10 +93,16 @@ class OAuth2Authenticator implements Authenticator
         $responseObject = JSONUtil::decode($response->getBody());
 
         if ($response->getHttpStatusCode() !== 200) {
+            if (property_exists($responseObject, 'error_description')) {
+                throw new OAuth2Exception(sprintf(
+                    'There was an error while retrieving the OAuth2 access token: %s - %s',
+                    $responseObject->error,
+                    $responseObject->error_description
+                ));
+            }
             throw new OAuth2Exception(sprintf(
-                'There was an error while retrieving the OAuth2 access token: %s - %s',
-                $responseObject->error,
-                $responseObject->error_description
+                'There was an error while retrieving the OAuth2 access token: %s',
+                $responseObject->error
             ));
         }
         $oauth2AccessToken = $responseObject->access_token;

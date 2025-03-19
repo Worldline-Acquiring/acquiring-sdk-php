@@ -23,6 +23,11 @@ class PlainCardData extends DataObject
     public $cardSecurityCode = null;
 
     /**
+     * @var int
+     */
+    public $cardSequenceNumber = null;
+
+    /**
      * @var string
      */
     public $expiryDate = null;
@@ -38,6 +43,9 @@ class PlainCardData extends DataObject
         }
         if (!is_null($this->cardSecurityCode)) {
             $object->cardSecurityCode = $this->cardSecurityCode;
+        }
+        if (!is_null($this->cardSequenceNumber)) {
+            $object->cardSequenceNumber = $this->cardSequenceNumber;
         }
         if (!is_null($this->expiryDate)) {
             $object->expiryDate = $this->expiryDate;
@@ -58,6 +66,9 @@ class PlainCardData extends DataObject
         }
         if (property_exists($object, 'cardSecurityCode')) {
             $this->cardSecurityCode = $object->cardSecurityCode;
+        }
+        if (property_exists($object, 'cardSequenceNumber')) {
+            $this->cardSequenceNumber = $object->cardSequenceNumber;
         }
         if (property_exists($object, 'expiryDate')) {
             $this->expiryDate = $object->expiryDate;

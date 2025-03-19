@@ -13,6 +13,11 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class ApiActionResponseForRefund extends DataObject
 {
     /**
+     * @var AdditionalResponseData
+     */
+    public $additionalResponseData = null;
+
+    /**
      * @var string
      */
     public $operationId = null;
@@ -48,6 +53,9 @@ class ApiActionResponseForRefund extends DataObject
     public function toObject()
     {
         $object = parent::toObject();
+        if (!is_null($this->additionalResponseData)) {
+            $object->additionalResponseData = $this->additionalResponseData->toObject();
+        }
         if (!is_null($this->operationId)) {
             $object->operationId = $this->operationId;
         }
@@ -77,6 +85,13 @@ class ApiActionResponseForRefund extends DataObject
     public function fromObject($object)
     {
         parent::fromObject($object);
+        if (property_exists($object, 'additionalResponseData')) {
+            if (!is_object($object->additionalResponseData)) {
+                throw new UnexpectedValueException('value \'' . print_r($object->additionalResponseData, true) . '\' is not an object');
+            }
+            $value = new AdditionalResponseData();
+            $this->additionalResponseData = $value->fromObject($object->additionalResponseData);
+        }
         if (property_exists($object, 'operationId')) {
             $this->operationId = $object->operationId;
         }

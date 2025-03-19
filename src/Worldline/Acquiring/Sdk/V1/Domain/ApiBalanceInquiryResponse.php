@@ -13,6 +13,11 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class ApiBalanceInquiryResponse extends DataObject
 {
     /**
+     * @var AdditionalResponseData
+     */
+    public $additionalResponseData = null;
+
+    /**
      * @var string
      */
     public $authorizationCode = null;
@@ -21,6 +26,11 @@ class ApiBalanceInquiryResponse extends DataObject
      * @var AmountData
      */
     public $availableAmount = null;
+
+    /**
+     * @var CardPaymentDataForResponse
+     */
+    public $cardPaymentData = null;
 
     /**
      * @var string
@@ -58,11 +68,17 @@ class ApiBalanceInquiryResponse extends DataObject
     public function toObject()
     {
         $object = parent::toObject();
+        if (!is_null($this->additionalResponseData)) {
+            $object->additionalResponseData = $this->additionalResponseData->toObject();
+        }
         if (!is_null($this->authorizationCode)) {
             $object->authorizationCode = $this->authorizationCode;
         }
         if (!is_null($this->availableAmount)) {
             $object->availableAmount = $this->availableAmount->toObject();
+        }
+        if (!is_null($this->cardPaymentData)) {
+            $object->cardPaymentData = $this->cardPaymentData->toObject();
         }
         if (!is_null($this->operationId)) {
             $object->operationId = $this->operationId;
@@ -93,6 +109,13 @@ class ApiBalanceInquiryResponse extends DataObject
     public function fromObject($object)
     {
         parent::fromObject($object);
+        if (property_exists($object, 'additionalResponseData')) {
+            if (!is_object($object->additionalResponseData)) {
+                throw new UnexpectedValueException('value \'' . print_r($object->additionalResponseData, true) . '\' is not an object');
+            }
+            $value = new AdditionalResponseData();
+            $this->additionalResponseData = $value->fromObject($object->additionalResponseData);
+        }
         if (property_exists($object, 'authorizationCode')) {
             $this->authorizationCode = $object->authorizationCode;
         }
@@ -102,6 +125,13 @@ class ApiBalanceInquiryResponse extends DataObject
             }
             $value = new AmountData();
             $this->availableAmount = $value->fromObject($object->availableAmount);
+        }
+        if (property_exists($object, 'cardPaymentData')) {
+            if (!is_object($object->cardPaymentData)) {
+                throw new UnexpectedValueException('value \'' . print_r($object->cardPaymentData, true) . '\' is not an object');
+            }
+            $value = new CardPaymentDataForResponse();
+            $this->cardPaymentData = $value->fromObject($object->cardPaymentData);
         }
         if (property_exists($object, 'operationId')) {
             $this->operationId = $object->operationId;

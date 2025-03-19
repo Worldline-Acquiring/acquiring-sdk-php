@@ -14,14 +14,14 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class ApiPaymentResponse extends DataObject
 {
     /**
+     * @var AdditionalResponseData
+     */
+    public $additionalResponseData = null;
+
+    /**
      * @var CardPaymentDataForResponse
      */
     public $cardPaymentData = null;
-
-    /**
-     * @var EmvDataItem[]
-     */
-    public $emvData = null;
 
     /**
      * @var string
@@ -66,11 +66,6 @@ class ApiPaymentResponse extends DataObject
     /**
      * @var string
      */
-    public $retryAfter = null;
-
-    /**
-     * @var string
-     */
     public $status = null;
 
     /**
@@ -89,16 +84,11 @@ class ApiPaymentResponse extends DataObject
     public function toObject()
     {
         $object = parent::toObject();
+        if (!is_null($this->additionalResponseData)) {
+            $object->additionalResponseData = $this->additionalResponseData->toObject();
+        }
         if (!is_null($this->cardPaymentData)) {
             $object->cardPaymentData = $this->cardPaymentData->toObject();
-        }
-        if (!is_null($this->emvData)) {
-            $object->emvData = [];
-            foreach ($this->emvData as $element) {
-                if (!is_null($element)) {
-                    $object->emvData[] = $element->toObject();
-                }
-            }
         }
         if (!is_null($this->initialAuthorizationCode)) {
             $object->initialAuthorizationCode = $this->initialAuthorizationCode;
@@ -124,9 +114,6 @@ class ApiPaymentResponse extends DataObject
         if (!is_null($this->responseCodeDescription)) {
             $object->responseCodeDescription = $this->responseCodeDescription;
         }
-        if (!is_null($this->retryAfter)) {
-            $object->retryAfter = $this->retryAfter;
-        }
         if (!is_null($this->status)) {
             $object->status = $this->status;
         }
@@ -147,22 +134,19 @@ class ApiPaymentResponse extends DataObject
     public function fromObject($object)
     {
         parent::fromObject($object);
+        if (property_exists($object, 'additionalResponseData')) {
+            if (!is_object($object->additionalResponseData)) {
+                throw new UnexpectedValueException('value \'' . print_r($object->additionalResponseData, true) . '\' is not an object');
+            }
+            $value = new AdditionalResponseData();
+            $this->additionalResponseData = $value->fromObject($object->additionalResponseData);
+        }
         if (property_exists($object, 'cardPaymentData')) {
             if (!is_object($object->cardPaymentData)) {
                 throw new UnexpectedValueException('value \'' . print_r($object->cardPaymentData, true) . '\' is not an object');
             }
             $value = new CardPaymentDataForResponse();
             $this->cardPaymentData = $value->fromObject($object->cardPaymentData);
-        }
-        if (property_exists($object, 'emvData')) {
-            if (!is_array($object->emvData) && !is_object($object->emvData)) {
-                throw new UnexpectedValueException('value \'' . print_r($object->emvData, true) . '\' is not an array or object');
-            }
-            $this->emvData = [];
-            foreach ($object->emvData as $element) {
-                $value = new EmvDataItem();
-                $this->emvData[] = $value->fromObject($element);
-            }
         }
         if (property_exists($object, 'initialAuthorizationCode')) {
             $this->initialAuthorizationCode = $object->initialAuthorizationCode;
@@ -191,9 +175,6 @@ class ApiPaymentResponse extends DataObject
         }
         if (property_exists($object, 'responseCodeDescription')) {
             $this->responseCodeDescription = $object->responseCodeDescription;
-        }
-        if (property_exists($object, 'retryAfter')) {
-            $this->retryAfter = $object->retryAfter;
         }
         if (property_exists($object, 'status')) {
             $this->status = $object->status;
