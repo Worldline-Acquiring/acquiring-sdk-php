@@ -23,13 +23,13 @@ class DefaultOAuth2TokenCache implements OAuth2TokenCache
     }
 
     /**
-     * @param string $tokenType The token type that was derived from the URI path.
+     * @param string $tokenIdentifier An identifier for the access token, derived from the URI path.
      * @return string|null The currently cached OAuth2 access token, or null if not set or expired.
      */
-    public function getOAuth2AccessToken($tokenType)
+    public function getOAuth2AccessToken(string $tokenIdentifier)
     {
-        $accessTokenKey = self::OAUTH2_ACCESS_TOKEN_PREFIX . $tokenType;
-        $timestampKey = self::EXPIRATION_TIMESTAMP_PREFIX . $tokenType;
+        $accessTokenKey = $this->addPrefix($tokenIdentifier, self::OAUTH2_ACCESS_TOKEN_PREFIX);
+        $timestampKey = $this->addPrefix($tokenIdentifier, self::EXPIRATION_TIMESTAMP_PREFIX);
         if (isset($this->array[$accessTokenKey]) && isset($this->array[$timestampKey])) {
             $expirationTimestamp = intval($this->array[$timestampKey]);
             if ($expirationTimestamp > time()) {
@@ -40,14 +40,21 @@ class DefaultOAuth2TokenCache implements OAuth2TokenCache
     }
 
     /**
-     * @param string $tokenType The token type that was derived from the URI path.
+     * @param string $tokenIdentifier An identifier for the access token, derived from the URI path.
      * @param string $oauth2AccessToken The OAuth2 access token to store.
      * @param int $expirationTimestamp The timestamp the OAuth2 access token expires, as a number of seconds since the Unix Epoch (January 1 1970 00:00:00 GMT).
      */
-    public function storeOAuth2AccessToken($tokenType, $oauth2AccessToken, $expirationTimestamp)
+    public function storeOAuth2AccessToken($tokenIdentifier, $oauth2AccessToken, $expirationTimestamp)
     {
-        $this->array[self::OAUTH2_ACCESS_TOKEN_PREFIX . $tokenType] = $oauth2AccessToken;
-        $this->array[self::EXPIRATION_TIMESTAMP_PREFIX . $tokenType] = strval($expirationTimestamp);
+        $this->array[$this->addPrefix($tokenIdentifier, self::OAUTH2_ACCESS_TOKEN_PREFIX)] = $oauth2AccessToken;
+        $this->array[$this->addPrefix($tokenIdentifier, self::EXPIRATION_TIMESTAMP_PREFIX)] = strval($expirationTimestamp);
     }
 
+    private function addPrefix($tokenIdentifier, $prefix)
+    {
+        if (!$tokenIdentifier) {
+            return $prefix;
+        }
+        return $prefix . '/' . $tokenIdentifier;
+    }
 }

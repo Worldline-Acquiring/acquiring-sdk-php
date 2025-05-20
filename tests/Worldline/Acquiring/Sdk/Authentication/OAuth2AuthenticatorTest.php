@@ -111,10 +111,41 @@ EOD;
 
         $this->assertEquals(1, $authenticator->getConnectionCount());
 
-        $matchedPath = '';
-        $this->assertArrayHasKey(DefaultOAuth2TokenCache::OAUTH2_ACCESS_TOKEN_PREFIX . $matchedPath, $array);
-        $this->assertArrayHasKey(DefaultOAuth2TokenCache::EXPIRATION_TIMESTAMP_PREFIX . $matchedPath, $array);
-        $this->assertEquals('accessToken', $array[DefaultOAuth2TokenCache::OAUTH2_ACCESS_TOKEN_PREFIX . $matchedPath]);
+        $tokenIdentifier = hash('sha256', implode(' ', OAuth2Scopes::all()));
+        $this->assertArrayHasKey(DefaultOAuth2TokenCache::OAUTH2_ACCESS_TOKEN_PREFIX . '/' . $tokenIdentifier, $array);
+        $this->assertArrayHasKey(DefaultOAuth2TokenCache::EXPIRATION_TIMESTAMP_PREFIX . '/' . $tokenIdentifier, $array);
+        $this->assertEquals('accessToken', $array[DefaultOAuth2TokenCache::OAUTH2_ACCESS_TOKEN_PREFIX . '/' . $tokenIdentifier]);
+    }
+
+    public function testGetAuthorizationWithCustomScopes()
+    {
+        $array = array();
+
+        $configuration = $this->getCommunicatorConfiguration();
+        $configuration->setOAuth2Scopes('scope1 scope2');
+        $tokenCache = new DefaultOAuth2TokenCache($array);
+        $responseBody = <<<EOD
+{
+  "access_token": "accessToken",
+  "expires_in": 300
+}
+EOD;
+        $response = new ConnectionResponse(200, array('Content-Type' => 'application/json'), $responseBody);
+
+        $authenticator = new TestOAuth2Authenticator($configuration, $tokenCache, $response);
+
+        for ($i = 0; $i < 10; $i++) {
+            $authorization = $authenticator->getAuthorization('', '/operations', array());
+
+            $this->assertEquals('Bearer accessToken', $authorization);
+        }
+
+        $this->assertEquals(1, $authenticator->getConnectionCount());
+
+        $tokenIdentifier = hash('sha256', 'scope1 scope2');
+        $this->assertArrayHasKey(DefaultOAuth2TokenCache::OAUTH2_ACCESS_TOKEN_PREFIX . '/' . $tokenIdentifier, $array);
+        $this->assertArrayHasKey(DefaultOAuth2TokenCache::EXPIRATION_TIMESTAMP_PREFIX . '/' . $tokenIdentifier, $array);
+        $this->assertEquals('accessToken', $array[DefaultOAuth2TokenCache::OAUTH2_ACCESS_TOKEN_PREFIX . '/' . $tokenIdentifier]);
     }
 }
 

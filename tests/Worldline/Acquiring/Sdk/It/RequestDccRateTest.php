@@ -1,7 +1,6 @@
 <?php
 
 use Worldline\Acquiring\Sdk\ClientTestCase;
-use Worldline\Acquiring\Sdk\V1\Acquirer\Merchant\Payments\GetPaymentStatusParams;
 
 /**
  * @group integration

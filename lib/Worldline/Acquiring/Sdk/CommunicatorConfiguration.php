@@ -22,6 +22,11 @@ class CommunicatorConfiguration
     private $authorizationSecret;
 
     /**
+     * @var string|null
+     */
+    private $oauth2Scopes;
+
+    /**
      * @var string
      */
     private $apiEndpoint;
@@ -165,6 +170,22 @@ class CommunicatorConfiguration
     public function setOAuth2ClientSecret($oauth2ClientSecret)
     {
         $this->setAuthorizationSecret($oauth2ClientSecret);
+    }
+
+    /**
+     * @return string|null A space-separated list of scopes to use. If empty or null the SDK will provide a set of defaults.
+     */
+    public function getOauth2Scopes(): ?string
+    {
+        return $this->oauth2Scopes;
+    }
+
+    /**
+     * @param string|null $oauth2Scopes A space-separated list of scopes to use. If empty or null the SDK will provide a set of defaults.
+     */
+    public function setOAuth2Scopes($oauth2Scopes)
+    {
+        $this->oauth2Scopes = $oauth2Scopes;
     }
 
     /**

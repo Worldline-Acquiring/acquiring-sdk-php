@@ -10,7 +10,6 @@ use Worldline\Acquiring\Sdk\V1\Domain\ApiPaymentResource;
 use Worldline\Acquiring\Sdk\V1\Domain\ApiPaymentResponse;
 use Worldline\Acquiring\Sdk\V1\Domain\CardDataForDcc;
 use Worldline\Acquiring\Sdk\V1\Domain\CardPaymentData;
-use Worldline\Acquiring\Sdk\V1\Domain\ECommerceData;
 use Worldline\Acquiring\Sdk\V1\Domain\GetDCCRateRequest;
 use Worldline\Acquiring\Sdk\V1\Domain\GetDccRateResponse;
 use Worldline\Acquiring\Sdk\V1\Domain\PaymentReferences;
@@ -67,6 +66,18 @@ class ClientTestCase extends TestCase
             $this->proxyClient = new Client($communicator);
         }
         return $this->proxyClient;
+    }
+
+    /**
+     * @return Client
+     */
+    protected function getClientWithCustomScopes($oauth2Scopes)
+    {
+        $communicatorConfiguration = $this->getCommunicatorConfiguration();
+        $communicatorConfiguration->setOAuth2Scopes($oauth2Scopes);
+        $authenticator = new OAuth2Authenticator($communicatorConfiguration, $this->getOAuth2TokenUri(), null);
+        $communicator = new Communicator($communicatorConfiguration, $authenticator);
+        return new Client($communicator);
     }
 
     /**
