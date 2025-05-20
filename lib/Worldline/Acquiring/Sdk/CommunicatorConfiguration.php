@@ -175,7 +175,7 @@ class CommunicatorConfiguration
     /**
      * @return string|null A space-separated list of scopes to use. If empty or null the SDK will provide a set of defaults.
      */
-    public function getOauth2Scopes(): ?string
+    public function getOAuth2Scopes(): ?string
     {
         return $this->oauth2Scopes;
     }
