@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Class Worldline\Acquiring\Sdk\Authentication\OAuth2Authenticator | Worldline Acquiring PHP SDK API</title>
+	<title>Class Worldline\Acquiring\Sdk\Authentication\OAuth2Scopes | Worldline Acquiring PHP SDK API</title>
 	<link rel="stylesheet" href="assets/main.css">
 	<script src="assets/main.js" defer></script>
 </head>
@@ -59,12 +59,12 @@
 							DefaultOAuth2TokenCache
 						</a>
 					</li>
-					<li class="active">
+					<li>
 						<a href="Worldline.Acquiring.Sdk.Authentication.OAuth2Authenticator.html">
 							OAuth2Authenticator
 						</a>
 					</li>
-					<li>
+					<li class="active">
 						<a href="Worldline.Acquiring.Sdk.Authentication.OAuth2Scopes.html">
 							OAuth2Scopes
 						</a>
@@ -117,7 +117,7 @@
 						<a href="namespace-Worldline.Acquiring.Sdk.Authentication.html">Namespace</a>
 					
 				</li>
-<li class="active"><a href="Worldline.Acquiring.Sdk.Authentication.OAuth2Authenticator.html">Class</a></li>				<li>
+<li class="active"><a href="Worldline.Acquiring.Sdk.Authentication.OAuth2Scopes.html">Class</a></li>				<li>
 					<a href="tree.html">Tree</a>
 				</li>
 			</ul>
@@ -133,7 +133,7 @@
 
 		<div class="layout-content">
 		<h1>
-			Class <a href="namespace-Worldline.html">Worldline</a>\<a href="namespace-Worldline.Acquiring.html">Acquiring</a>\<a href="namespace-Worldline.Acquiring.Sdk.html">Sdk</a>\<a href="namespace-Worldline.Acquiring.Sdk.Authentication.html">Authentication</a>\<a href="Worldline.Acquiring.Sdk.Authentication.OAuth2Authenticator.html">OAuth2Authenticator</a>
+			Class <a href="namespace-Worldline.html">Worldline</a>\<a href="namespace-Worldline.Acquiring.html">Acquiring</a>\<a href="namespace-Worldline.Acquiring.Sdk.html">Sdk</a>\<a href="namespace-Worldline.Acquiring.Sdk.Authentication.html">Authentication</a>\<a href="Worldline.Acquiring.Sdk.Authentication.OAuth2Scopes.html">OAuth2Scopes</a>
 		</h1>
 
 
@@ -141,21 +141,16 @@
 
 
 
-		<tr>
-			<th><code>implements</code></th>
-			<td>
-<code><a href="Worldline.Acquiring.Sdk.Authentication.Authenticator.html"><span title="Worldline\Acquiring\Sdk\Authentication\Authenticator">Authenticator</span></a></code>			</td>
-		</tr>
 
 	</table>
 		<div class="classLikeDescription">
-	<div class="description"><p>Class OAuth2Authenticator</p>
+	<div class="description"><p>Class OAuth2Scopes</p>
 </div>
 		</div>
 
 
 		<div class="classLikeSection">
-			<b>Located at</b> <a href="source-lib.Worldline.Acquiring.Sdk.Authentication.OAuth2Authenticator.html#17" title="Go to source code">lib/Worldline/Acquiring/Sdk/Authentication/OAuth2Authenticator.php</a><br>
+			<b>Located at</b> <a href="source-src.Worldline.Acquiring.Sdk.Authentication.OAuth2Scopes.html#12" title="Go to source code">src/Worldline/Acquiring/Sdk/Authentication/OAuth2Scopes.php</a><br>
 		</div>
 
 
@@ -165,48 +160,18 @@
 				<th class="table-heading sortable" colspan="3" title="Switch between natural and alphabetical order">Methods</th>
 			</tr>
 
-	<tr class="expandable collapsed" data-order="__construct" id="___construct">
+	<tr class="expandable collapsed" data-order="all" id="_all">
 			<td class="table-cell table-shrink">
 				<code class="nowrap">
 					
 	public
-					
+					static
 					
 				</code>
 			</td>
 
 			<td class="table-cell">
-				<code><a href="source-lib.Worldline.Acquiring.Sdk.Authentication.OAuth2Authenticator.html#40-64" title="Go to source code">__construct</a>(
-	<span><a href="Worldline.Acquiring.Sdk.CommunicatorConfiguration.html"><span title="Worldline\Acquiring\Sdk\CommunicatorConfiguration">CommunicatorConfiguration</span></a> <var>$communicatorConfiguration</var></span>,
-	<span>string <var>$oauth2TokenUri</var></span>,
-	<span><a href="Worldline.Acquiring.Sdk.Authentication.OAuth2TokenCache.html"><span title="Worldline\Acquiring\Sdk\Authentication\OAuth2TokenCache">OAuth2TokenCache</span></a>|null <var>$tokenCache</var> = <span class="php-kw">null</span></span>,
-)</code>
-
-
-
-	<div class="expandable-expandedView">
-
-
-
-
-	</div>
-			</td>
-		<td class="table-anchor">
-			<a href="#___construct">#</a>
-		</td>
-	</tr>
-	<tr class="expandable collapsed" data-order="getAuthorization" id="_getAuthorization">
-			<td class="table-cell table-shrink">
-				<code class="nowrap">
-					
-	public
-					
-					
-				</code>
-			</td>
-
-			<td class="table-cell">
-				<code><a href="source-lib.Worldline.Acquiring.Sdk.Authentication.OAuth2Authenticator.html#66-123" title="Go to source code">getAuthorization</a>(<span>string <var>$httpMethod</var></span>, <span>string <var>$uriPath</var></span>, <span>string[] <var>$requestHeaders</var></span>): string</code>
+				<code><a href="source-src.Worldline.Acquiring.Sdk.Authentication.OAuth2Scopes.html#60-67" title="Go to source code">all</a>(): array</code>
 
 
 
@@ -214,49 +179,144 @@
 
 
 							<h4>Returns</h4>
-							<div><p>The full value for the Authorization header</p>
+							<div><p>all available scopes.</p>
 </div>
 
 
-		<h4>Implements</h4>
-		<ul>
-				<li>
-<a href="Worldline.Acquiring.Sdk.Authentication.Authenticator.html#_getAuthorization">						<code>Worldline\Acquiring\Sdk\Authentication\Authenticator::getAuthorization()</code></a>				</li>
-		</ul>
 	</div>
 			</td>
 		<td class="table-anchor">
-			<a href="#_getAuthorization">#</a>
+			<a href="#_all">#</a>
 		</td>
 	</tr>
-	<tr class="expandable collapsed" data-order="createConnection" id="_createConnection">
+	<tr class="expandable collapsed" data-order="forApiVersion" id="_forApiVersion">
 			<td class="table-cell table-shrink">
 				<code class="nowrap">
 					
-	protected
-					
+	public
+					static
 					
 				</code>
 			</td>
 
 			<td class="table-cell">
-				<code><a href="source-lib.Worldline.Acquiring.Sdk.Authentication.OAuth2Authenticator.html#125-131" title="Go to source code">createConnection</a>(): <a href="Worldline.Acquiring.Sdk.Communication.Connection.html"><span title="Worldline\Acquiring\Sdk\Communication\Connection">Connection</span></a></code>
+				<code><a href="source-src.Worldline.Acquiring.Sdk.Authentication.OAuth2Scopes.html#69-82" title="Go to source code">forApiVersion</a>(<span>string <var>$apiVersion</var></span>): array</code>
 
 
 
 	<div class="expandable-expandedView">
 
 
+							<h4>Returns</h4>
+							<div><p>all scopes needed for all operations of the given API version.</p>
+</div>
 
 
 	</div>
 			</td>
 		<td class="table-anchor">
-			<a href="#_createConnection">#</a>
+			<a href="#_forApiVersion">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="forOperation" id="_forOperation">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					static
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-src.Worldline.Acquiring.Sdk.Authentication.OAuth2Scopes.html#84-94" title="Go to source code">forOperation</a>(<span>string <var>$apiVersion</var></span>, <span>string <var>$operationId</var></span>): array</code>
+
+
+
+	<div class="expandable-expandedView">
+
+
+							<h4>Returns</h4>
+							<div><p>all scopes needed for the given operation of the given API version.</p>
+</div>
+
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_forOperation">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="forOperations" id="_forOperations">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					static
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-src.Worldline.Acquiring.Sdk.Authentication.OAuth2Scopes.html#96-114" title="Go to source code">forOperations</a>(<span>string <var>$apiVersion</var></span>, <span>string ...<var>$operationIds</var></span>): array</code>
+
+
+
+	<div class="expandable-expandedView">
+
+
+							<h4>Returns</h4>
+							<div><p>all scopes needed for the given operations of the given API version.</p>
+</div>
+
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_forOperations">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="forFilteredOperations" id="_forFilteredOperations">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					static
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-src.Worldline.Acquiring.Sdk.Authentication.OAuth2Scopes.html#116-134" title="Go to source code">forFilteredOperations</a>(<span>callable <var>$filter</var></span>): array</code>
+
+
+
+	<div class="expandable-expandedView">
+
+							<h4>Parameters</h4>
+							<table>
+									<tr>
+										<td><var>$filter</var>&nbsp;&nbsp;</td>
+										<td><p>The filter to apply.
+The first argument is the API version, the second is the operation id,
+the return value should be true to include the scopes for the API version and operation id,
+or false otherwise.</p>
+</td>
+									</tr>
+							</table>
+
+							<h4>Returns</h4>
+							<div><p>all scopes needed for the operations that pass the given filter.</p>
+</div>
+
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_forFilteredOperations">#</a>
 		</td>
 	</tr>
 		</table>
-
 
 
 

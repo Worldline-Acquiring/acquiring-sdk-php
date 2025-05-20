@@ -64,6 +64,11 @@
 							OAuth2Authenticator
 						</a>
 					</li>
+					<li>
+						<a href="Worldline.Acquiring.Sdk.Authentication.OAuth2Scopes.html">
+							OAuth2Scopes
+						</a>
+					</li>
 			</ul>
 		</div>
 
@@ -181,7 +186,7 @@
 			</td>
 
 			<td class="table-cell">
-				<code><a href="source-lib.Worldline.Acquiring.Sdk.Authentication.OAuth2TokenCache.html#11-15" title="Go to source code">getOAuth2AccessToken</a>(<span>string <var>$tokenType</var></span>): string|null</code>
+				<code><a href="source-lib.Worldline.Acquiring.Sdk.Authentication.OAuth2TokenCache.html#11-15" title="Go to source code">getOAuth2AccessToken</a>(<span>string <var>$tokenIdentifier</var></span>): string|null</code>
 
 
 
@@ -190,8 +195,8 @@
 							<h4>Parameters</h4>
 							<table>
 									<tr>
-										<td><var>$tokenType</var>&nbsp;&nbsp;</td>
-										<td><p>The token type that was derived from the URI path.</p>
+										<td><var>$tokenIdentifier</var>&nbsp;&nbsp;</td>
+										<td><p>An identifier for the access token, derived from the URI path.</p>
 </td>
 									</tr>
 							</table>
@@ -223,7 +228,7 @@
 			</td>
 
 			<td class="table-cell">
-				<code><a href="source-lib.Worldline.Acquiring.Sdk.Authentication.OAuth2TokenCache.html#17-22" title="Go to source code">storeOAuth2AccessToken</a>(<span>string <var>$tokenType</var></span>, <span>string <var>$oauth2AccessToken</var></span>, <span>int <var>$expirationTimestamp</var></span>)</code>
+				<code><a href="source-lib.Worldline.Acquiring.Sdk.Authentication.OAuth2TokenCache.html#17-22" title="Go to source code">storeOAuth2AccessToken</a>(<span>string <var>$tokenIdentifier</var></span>, <span>string <var>$oauth2AccessToken</var></span>, <span>int <var>$expirationTimestamp</var></span>)</code>
 
 
 
@@ -232,8 +237,8 @@
 							<h4>Parameters</h4>
 							<table>
 									<tr>
-										<td><var>$tokenType</var>&nbsp;&nbsp;</td>
-										<td><p>The tokenType that was derived from the uriPath</p>
+										<td><var>$tokenIdentifier</var>&nbsp;&nbsp;</td>
+										<td><p>An identifier for the access token, derived from the URI path.</p>
 </td>
 									</tr>
 									<tr>
