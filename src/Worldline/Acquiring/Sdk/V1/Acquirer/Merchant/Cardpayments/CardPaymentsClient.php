@@ -2,7 +2,7 @@
 /*
  * This file was automatically generated.
  */
-namespace Worldline\Acquiring\Sdk\V1\Acquirer\Merchant\Payments;
+namespace Worldline\Acquiring\Sdk\V1\Acquirer\Merchant\Cardpayments;
 
 use Worldline\Acquiring\Sdk\ApiResource;
 use Worldline\Acquiring\Sdk\CallContext;
@@ -28,29 +28,33 @@ use Worldline\Acquiring\Sdk\V1\ReferenceException;
 use Worldline\Acquiring\Sdk\V1\ValidationException;
 
 /**
- * Payments client.
+ * CardPayments client.
+ *
+ * @package Worldline\Acquiring\Sdk\V1\Acquirer\Merchant\Cardpayments
  */
-class PaymentsClient extends ApiResource
+class CardPaymentsClient extends ApiResource
 {
-    /** @var ExceptionFactory|null */
-    private $responseExceptionFactory = null;
+    /**
+     * @var ExceptionFactory|null
+     */
+    private ?ExceptionFactory $responseExceptionFactory = null;
 
     /**
      * Resource /processing/v1/{acquirerId}/{merchantId}/payments - Create payment
      *
      * @param ApiPaymentRequest $body
-     * @param CallContext|null $callContext
-     * @return ApiPaymentResponse
+     * @param CallContext|null  $callContext
      *
+     * @return ApiPaymentResponse
      * @throws ValidationException
      * @throws AuthorizationException
      * @throws ReferenceException
      * @throws PlatformException
      * @throws ApiException
      * @throws InvalidResponseException
-     * @link https://docs.acquiring.worldline-solutions.com/api-reference#tag/Payments/operation/processPayment Create payment
+     * @link   https://docs.acquiring.worldline-solutions.com/api-reference#tag/Card-Payments/operation/processPayment Create payment
      */
-    public function processPayment(ApiPaymentRequest $body, CallContext $callContext = null)
+    public function processPayment(ApiPaymentRequest $body, ?CallContext $callContext = null): ApiPaymentResponse
     {
         $responseClassMap = new ResponseClassMap();
         $responseClassMap->defaultSuccessResponseClassName = '\Worldline\Acquiring\Sdk\V1\Domain\ApiPaymentResponse';
@@ -75,20 +79,20 @@ class PaymentsClient extends ApiResource
     /**
      * Resource /processing/v1/{acquirerId}/{merchantId}/payments/{paymentId} - Retrieve payment
      *
-     * @param string $paymentId
+     * @param string                 $paymentId
      * @param GetPaymentStatusParams $query
-     * @param CallContext|null $callContext
-     * @return ApiPaymentResource
+     * @param CallContext|null       $callContext
      *
+     * @return ApiPaymentResource
      * @throws ValidationException
      * @throws AuthorizationException
      * @throws ReferenceException
      * @throws PlatformException
      * @throws ApiException
      * @throws InvalidResponseException
-     * @link https://docs.acquiring.worldline-solutions.com/api-reference#tag/Payments/operation/getPaymentStatus Retrieve payment
+     * @link   https://docs.acquiring.worldline-solutions.com/api-reference#tag/Card-Payments/operation/getPaymentStatus Retrieve payment
      */
-    public function getPaymentStatus($paymentId, GetPaymentStatusParams $query, CallContext $callContext = null)
+    public function getPaymentStatus(string $paymentId, GetPaymentStatusParams $query, ?CallContext $callContext = null): ApiPaymentResource
     {
         $this->context['paymentId'] = $paymentId;
         $responseClassMap = new ResponseClassMap();
@@ -113,20 +117,20 @@ class PaymentsClient extends ApiResource
     /**
      * Resource /processing/v1/{acquirerId}/{merchantId}/payments/{paymentId}/captures - Capture payment
      *
-     * @param string $paymentId
+     * @param string            $paymentId
      * @param ApiCaptureRequest $body
-     * @param CallContext|null $callContext
-     * @return ApiActionResponse
+     * @param CallContext|null  $callContext
      *
+     * @return ApiActionResponse
      * @throws ValidationException
      * @throws AuthorizationException
      * @throws ReferenceException
      * @throws PlatformException
      * @throws ApiException
      * @throws InvalidResponseException
-     * @link https://docs.acquiring.worldline-solutions.com/api-reference#tag/Payments/operation/simpleCaptureOfPayment Capture payment
+     * @link   https://docs.acquiring.worldline-solutions.com/api-reference#tag/Card-Payments/operation/simpleCaptureOfPayment Capture payment
      */
-    public function simpleCaptureOfPayment($paymentId, ApiCaptureRequest $body, CallContext $callContext = null)
+    public function simpleCaptureOfPayment(string $paymentId, ApiCaptureRequest $body, ?CallContext $callContext = null): ApiActionResponse
     {
         $this->context['paymentId'] = $paymentId;
         $responseClassMap = new ResponseClassMap();
@@ -152,20 +156,20 @@ class PaymentsClient extends ApiResource
     /**
      * Resource /processing/v1/{acquirerId}/{merchantId}/payments/{paymentId}/authorization-reversals - Reverse authorization
      *
-     * @param string $paymentId
+     * @param string                    $paymentId
      * @param ApiPaymentReversalRequest $body
-     * @param CallContext|null $callContext
-     * @return ApiReversalResponse
+     * @param CallContext|null          $callContext
      *
+     * @return ApiReversalResponse
      * @throws ValidationException
      * @throws AuthorizationException
      * @throws ReferenceException
      * @throws PlatformException
      * @throws ApiException
      * @throws InvalidResponseException
-     * @link https://docs.acquiring.worldline-solutions.com/api-reference#tag/Payments/operation/reverseAuthorization Reverse authorization
+     * @link   https://docs.acquiring.worldline-solutions.com/api-reference#tag/Card-Payments/operation/reverseAuthorization Reverse authorization
      */
-    public function reverseAuthorization($paymentId, ApiPaymentReversalRequest $body, CallContext $callContext = null)
+    public function reverseAuthorization(string $paymentId, ApiPaymentReversalRequest $body, ?CallContext $callContext = null): ApiReversalResponse
     {
         $this->context['paymentId'] = $paymentId;
         $responseClassMap = new ResponseClassMap();
@@ -191,20 +195,20 @@ class PaymentsClient extends ApiResource
     /**
      * Resource /processing/v1/{acquirerId}/{merchantId}/payments/{paymentId}/increments - Increment authorization
      *
-     * @param string $paymentId
+     * @param string              $paymentId
      * @param ApiIncrementRequest $body
-     * @param CallContext|null $callContext
-     * @return ApiIncrementResponse
+     * @param CallContext|null    $callContext
      *
+     * @return ApiIncrementResponse
      * @throws ValidationException
      * @throws AuthorizationException
      * @throws ReferenceException
      * @throws PlatformException
      * @throws ApiException
      * @throws InvalidResponseException
-     * @link https://docs.acquiring.worldline-solutions.com/api-reference#tag/Payments/operation/incrementPayment Increment authorization
+     * @link   https://docs.acquiring.worldline-solutions.com/api-reference#tag/Card-Payments/operation/incrementPayment Increment authorization
      */
-    public function incrementPayment($paymentId, ApiIncrementRequest $body, CallContext $callContext = null)
+    public function incrementPayment(string $paymentId, ApiIncrementRequest $body, ?CallContext $callContext = null): ApiIncrementResponse
     {
         $this->context['paymentId'] = $paymentId;
         $responseClassMap = new ResponseClassMap();
@@ -228,22 +232,22 @@ class PaymentsClient extends ApiResource
     }
 
     /**
-     * Resource /processing/v1/{acquirerId}/{merchantId}/payments/{paymentId}/refunds - Refund payment
+     * Resource /processing/v1/{acquirerId}/{merchantId}/payments/{paymentId}/refunds - Refund card payment
      *
-     * @param string $paymentId
+     * @param string                  $paymentId
      * @param ApiPaymentRefundRequest $body
-     * @param CallContext|null $callContext
-     * @return ApiActionResponseForRefund
+     * @param CallContext|null        $callContext
      *
+     * @return ApiActionResponseForRefund
      * @throws ValidationException
      * @throws AuthorizationException
      * @throws ReferenceException
      * @throws PlatformException
      * @throws ApiException
      * @throws InvalidResponseException
-     * @link https://docs.acquiring.worldline-solutions.com/api-reference#tag/Payments/operation/createRefund Refund payment
+     * @link   https://docs.acquiring.worldline-solutions.com/api-reference#tag/Card-Payments/operation/createRefund Refund card payment
      */
-    public function createRefund($paymentId, ApiPaymentRefundRequest $body, CallContext $callContext = null)
+    public function createRefund(string $paymentId, ApiPaymentRefundRequest $body, ?CallContext $callContext = null): ApiActionResponseForRefund
     {
         $this->context['paymentId'] = $paymentId;
         $responseClassMap = new ResponseClassMap();
@@ -266,8 +270,10 @@ class PaymentsClient extends ApiResource
         }
     }
 
-    /** @return ExceptionFactory */
-    private function getResponseExceptionFactory()
+    /**
+     * @return ExceptionFactory
+     */
+    private function getResponseExceptionFactory(): ExceptionFactory
     {
         if (is_null($this->responseExceptionFactory)) {
             $this->responseExceptionFactory = new ExceptionFactory();

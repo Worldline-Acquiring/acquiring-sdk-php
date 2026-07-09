@@ -18,32 +18,36 @@ use Worldline\Acquiring\Sdk\V1\ValidationException;
 
 /**
  * Ping client.
+ *
+ * @package Worldline\Acquiring\Sdk\V1\Ping
  */
 class PingClient extends ApiResource
 {
-    /** @var ExceptionFactory|null */
-    private $responseExceptionFactory = null;
+    /**
+     * @var ExceptionFactory|null
+     */
+    private ?ExceptionFactory $responseExceptionFactory = null;
 
     /**
      * Resource /services/v1/ping - Check API connection
      *
      * @param CallContext|null $callContext
-     * @return null
      *
+     * @return void
      * @throws ValidationException
      * @throws AuthorizationException
      * @throws ReferenceException
      * @throws PlatformException
      * @throws ApiException
      * @throws InvalidResponseException
-     * @link https://docs.acquiring.worldline-solutions.com/api-reference#tag/Ping/operation/ping Check API connection
+     * @link   https://docs.acquiring.worldline-solutions.com/api-reference#tag/Ping/operation/ping Check API connection
      */
-    public function ping(CallContext $callContext = null)
+    public function ping(?CallContext $callContext = null): void
     {
         $responseClassMap = new ResponseClassMap();
         $responseClassMap->defaultErrorResponseClassName = '\Worldline\Acquiring\Sdk\V1\Domain\ApiPaymentErrorResponse';
         try {
-            return $this->getCommunicator()->get(
+            $this->getCommunicator()->get(
                 $responseClassMap,
                 $this->instantiateUri('/services/v1/ping'),
                 null,
@@ -58,8 +62,10 @@ class PingClient extends ApiResource
         }
     }
 
-    /** @return ExceptionFactory */
-    private function getResponseExceptionFactory()
+    /**
+     * @return ExceptionFactory
+     */
+    private function getResponseExceptionFactory(): ExceptionFactory
     {
         if (is_null($this->responseExceptionFactory)) {
             $this->responseExceptionFactory = new ExceptionFactory();

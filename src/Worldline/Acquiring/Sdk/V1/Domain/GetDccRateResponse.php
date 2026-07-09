@@ -13,29 +13,29 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class GetDccRateResponse extends DataObject
 {
     /**
-     * @var string
+     * @var string|null
      */
-    public $disclaimerDisplay = null;
+    public ?string $disclaimerDisplay = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $disclaimerReceipt = null;
+    public ?string $disclaimerReceipt = null;
 
     /**
-     * @var DccProposal
+     * @var DccProposal|null
      */
-    public $proposal = null;
+    public ?DccProposal $proposal = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $result = null;
+    public ?string $result = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->disclaimerDisplay)) {
@@ -55,10 +55,11 @@ class GetDccRateResponse extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): GetDccRateResponse
     {
         parent::fromObject($object);
         if (property_exists($object, 'disclaimerDisplay')) {

@@ -14,58 +14,66 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class ApiPaymentRequest extends DataObject
 {
     /**
-     * @var AmountData
+     * @var AmountData|null
      */
-    public $amount = null;
+    public ?AmountData $amount = null;
 
     /**
-     * @var string
+     * @var AmountBreakdownData|null
      */
-    public $authorizationType = null;
+    public ?AmountBreakdownData $amountBreakdownData = null;
 
     /**
-     * @var CardPaymentData
+     * @var string|null
      */
-    public $cardPaymentData = null;
+    public ?string $authorizationType = null;
 
     /**
-     * @var DccData
+     * @var CardPaymentData|null
      */
-    public $dynamicCurrencyConversion = null;
+    public ?CardPaymentData $cardPaymentData = null;
 
     /**
-     * @var MerchantData
+     * @var DccData|null
      */
-    public $merchant = null;
+    public ?DccData $dynamicCurrencyConversion = null;
 
     /**
-     * @var string
+     * @var MerchantData|null
      */
-    public $operationId = null;
+    public ?MerchantData $merchant = null;
 
     /**
-     * @var PaymentReferences
+     * @var string|null
      */
-    public $references = null;
+    public ?string $operationId = null;
 
     /**
-     * @var TerminalData
+     * @var PaymentReferences|null
      */
-    public $terminalData = null;
+    public ?PaymentReferences $references = null;
 
     /**
-     * @var DateTime
+     * @var TerminalData|null
      */
-    public $transactionTimestamp = null;
+    public ?TerminalData $terminalData = null;
+
+    /**
+     * @var DateTime|null
+     */
+    public ?DateTime $transactionTimestamp = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->amount)) {
             $object->amount = $this->amount->toObject();
+        }
+        if (!is_null($this->amountBreakdownData)) {
+            $object->amountBreakdownData = $this->amountBreakdownData->toObject();
         }
         if (!is_null($this->authorizationType)) {
             $object->authorizationType = $this->authorizationType;
@@ -96,10 +104,11 @@ class ApiPaymentRequest extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): ApiPaymentRequest
     {
         parent::fromObject($object);
         if (property_exists($object, 'amount')) {
@@ -108,6 +117,13 @@ class ApiPaymentRequest extends DataObject
             }
             $value = new AmountData();
             $this->amount = $value->fromObject($object->amount);
+        }
+        if (property_exists($object, 'amountBreakdownData')) {
+            if (!is_object($object->amountBreakdownData)) {
+                throw new UnexpectedValueException('value \'' . print_r($object->amountBreakdownData, true) . '\' is not an object');
+            }
+            $value = new AmountBreakdownData();
+            $this->amountBreakdownData = $value->fromObject($object->amountBreakdownData);
         }
         if (property_exists($object, 'authorizationType')) {
             $this->authorizationType = $object->authorizationType;

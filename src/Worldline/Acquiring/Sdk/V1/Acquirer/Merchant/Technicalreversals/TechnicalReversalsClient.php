@@ -20,29 +20,33 @@ use Worldline\Acquiring\Sdk\V1\ValidationException;
 
 /**
  * TechnicalReversals client.
+ *
+ * @package Worldline\Acquiring\Sdk\V1\Acquirer\Merchant\Technicalreversals
  */
 class TechnicalReversalsClient extends ApiResource
 {
-    /** @var ExceptionFactory|null */
-    private $responseExceptionFactory = null;
+    /**
+     * @var ExceptionFactory|null
+     */
+    private ?ExceptionFactory $responseExceptionFactory = null;
 
     /**
      * Resource /processing/v1/{acquirerId}/{merchantId}/operations/{operationId}/reverse - Technical reversal
      *
-     * @param string $operationId
+     * @param string                      $operationId
      * @param ApiTechnicalReversalRequest $body
-     * @param CallContext|null $callContext
-     * @return ApiTechnicalReversalResponse
+     * @param CallContext|null            $callContext
      *
+     * @return ApiTechnicalReversalResponse
      * @throws ValidationException
      * @throws AuthorizationException
      * @throws ReferenceException
      * @throws PlatformException
      * @throws ApiException
      * @throws InvalidResponseException
-     * @link https://docs.acquiring.worldline-solutions.com/api-reference#tag/Technical-Reversals/operation/technicalReversal Technical reversal
+     * @link   https://docs.acquiring.worldline-solutions.com/api-reference#tag/Technical-Reversals/operation/technicalReversal Technical reversal
      */
-    public function technicalReversal($operationId, ApiTechnicalReversalRequest $body, CallContext $callContext = null)
+    public function technicalReversal(string $operationId, ApiTechnicalReversalRequest $body, ?CallContext $callContext = null): ApiTechnicalReversalResponse
     {
         $this->context['operationId'] = $operationId;
         $responseClassMap = new ResponseClassMap();
@@ -65,8 +69,10 @@ class TechnicalReversalsClient extends ApiResource
         }
     }
 
-    /** @return ExceptionFactory */
-    private function getResponseExceptionFactory()
+    /**
+     * @return ExceptionFactory
+     */
+    private function getResponseExceptionFactory(): ExceptionFactory
     {
         if (is_null($this->responseExceptionFactory)) {
             $this->responseExceptionFactory = new ExceptionFactory();

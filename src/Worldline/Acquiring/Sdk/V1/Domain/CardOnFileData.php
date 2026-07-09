@@ -13,24 +13,24 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class CardOnFileData extends DataObject
 {
     /**
-     * @var InitialCardOnFileData
+     * @var InitialCardOnFileData|null
      */
-    public $initialCardOnFileData = null;
+    public ?InitialCardOnFileData $initialCardOnFileData = null;
 
     /**
-     * @var bool
+     * @var bool|null
      */
-    public $isInitialTransaction = null;
+    public ?bool $isInitialTransaction = null;
 
     /**
-     * @var SubsequentCardOnFileData
+     * @var SubsequentCardOnFileData|null
      */
-    public $subsequentCardOnFileData = null;
+    public ?SubsequentCardOnFileData $subsequentCardOnFileData = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->initialCardOnFileData)) {
@@ -47,10 +47,11 @@ class CardOnFileData extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): CardOnFileData
     {
         parent::fromObject($object);
         if (property_exists($object, 'initialCardOnFileData')) {

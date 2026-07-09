@@ -13,19 +13,19 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class ECommerceDataForResponse extends DataObject
 {
     /**
-     * @var string
+     * @var string|null
      */
-    public $addressVerificationResult = null;
+    public ?string $addressVerificationResult = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $cardSecurityCodeResult = null;
+    public ?string $cardSecurityCodeResult = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->addressVerificationResult)) {
@@ -39,10 +39,11 @@ class ECommerceDataForResponse extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): ECommerceDataForResponse
     {
         parent::fromObject($object);
         if (property_exists($object, 'addressVerificationResult')) {

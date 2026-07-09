@@ -14,21 +14,21 @@ class OAuth2Scopes
     /**
      * @var array|null
      */
-    private static $SCOPES_BY_OPERATION = null;
+    private static ?array $scopesByOperation = null;
 
     /**
      * @var array|null
      */
-    private static $ALL_SCOPES = null;
+    private static ?array $allScopes = null;
 
     private function __construct()
     {
     }
 
-    private static function initializeScopesByOperationIfNeeded()
+    private static function initializeScopesByOperationIfNeeded(): void
     {
-        if (is_null(OAuth2Scopes::$SCOPES_BY_OPERATION)) {
-            OAuth2Scopes::$SCOPES_BY_OPERATION = [
+        if (is_null(OAuth2Scopes::$scopesByOperation)) {
+            OAuth2Scopes::$scopesByOperation = [
                 "v1" => [
                     "processPayment" => ["processing_payment"],
                     "getPaymentStatus" => ["processing_payment"],
@@ -47,33 +47,34 @@ class OAuth2Scopes
                     "ping" => ["services_ping"],
                 ],
             ];
-            OAuth2Scopes::$ALL_SCOPES = [];
-            foreach (OAuth2Scopes::$SCOPES_BY_OPERATION as $operations) {
+            OAuth2Scopes::$allScopes = [];
+            foreach (OAuth2Scopes::$scopesByOperation as $operations) {
                 foreach ($operations as $scopes) {
-                    OAuth2Scopes::$ALL_SCOPES = array_merge(OAuth2Scopes::$ALL_SCOPES, array_values($scopes));
+                    OAuth2Scopes::$allScopes = array_merge(OAuth2Scopes::$allScopes, array_values($scopes));
                 }
             }
-            OAuth2Scopes::$ALL_SCOPES = array_unique(OAuth2Scopes::$ALL_SCOPES);
+            OAuth2Scopes::$allScopes = array_unique(OAuth2Scopes::$allScopes);
         }
     }
 
     /**
      * @return array all available scopes.
      */
-    public static function all()
+    public static function all(): array
     {
         OAuth2Scopes::initializeScopesByOperationIfNeeded();
-        return OAuth2Scopes::$ALL_SCOPES;
+        return OAuth2Scopes::$allScopes;
     }
 
     /**
      * @param string $apiVersion
+     *
      * @return array all scopes needed for all operations of the given API version.
      */
-    public static function forApiVersion($apiVersion)
+    public static function forApiVersion(string $apiVersion): array
     {
         OAuth2Scopes::initializeScopesByOperationIfNeeded();
-        $operations = OAuth2Scopes::$SCOPES_BY_OPERATION[$apiVersion] ?? [];
+        $operations = OAuth2Scopes::$scopesByOperation[$apiVersion] ?? [];
         $result = [];
         foreach ($operations as $scopes) {
             $result = array_merge($result, $scopes);
@@ -84,24 +85,26 @@ class OAuth2Scopes
     /**
      * @param string $apiVersion
      * @param string $operationId
+     *
      * @return array all scopes needed for the given operation of the given API version.
      */
-    public static function forOperation($apiVersion, $operationId)
+    public static function forOperation(string $apiVersion, string $operationId): array
     {
         OAuth2Scopes::initializeScopesByOperationIfNeeded();
-        $operations = OAuth2Scopes::$SCOPES_BY_OPERATION[$apiVersion] ?? [];
+        $operations = OAuth2Scopes::$scopesByOperation[$apiVersion] ?? [];
         return $operations[$operationId] ?? [];
     }
 
     /**
      * @param string $apiVersion
      * @param string ...$operationIds
+     *
      * @return array all scopes needed for the given operations of the given API version.
      */
-    public static function forOperations($apiVersion, ...$operationIds)
+    public static function forOperations(string $apiVersion, string ...$operationIds): array
     {
         OAuth2Scopes::initializeScopesByOperationIfNeeded();
-        $operations = OAuth2Scopes::$SCOPES_BY_OPERATION[$apiVersion] ?? [];
+        $operations = OAuth2Scopes::$scopesByOperation[$apiVersion] ?? [];
         if (count($operationIds) === 1) {
             return $operations[$operationIds[0]] ?? [];
         }
@@ -120,10 +123,11 @@ class OAuth2Scopes
      *                         or false otherwise.
      * @return array all scopes needed for the operations that pass the given filter.
      */
-    public static function forFilteredOperations(callable $filter) {
+    public static function forFilteredOperations(callable $filter): array
+    {
         OAuth2Scopes::initializeScopesByOperationIfNeeded();
         $result = [];
-        foreach (OAuth2Scopes::$SCOPES_BY_OPERATION as $apiVersion => $operations) {
+        foreach (OAuth2Scopes::$scopesByOperation as $apiVersion => $operations) {
             foreach ($operations as $operationId => $scopes) {
                 if (call_user_func($filter, $apiVersion, $operationId)) {
                     $result = array_merge($result, $scopes);

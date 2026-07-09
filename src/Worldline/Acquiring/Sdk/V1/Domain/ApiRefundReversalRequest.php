@@ -14,24 +14,24 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class ApiRefundReversalRequest extends DataObject
 {
     /**
-     * @var string
+     * @var string|null
      */
-    public $operationId = null;
+    public ?string $operationId = null;
 
     /**
-     * @var TerminalData
+     * @var TerminalData|null
      */
-    public $terminalData = null;
+    public ?TerminalData $terminalData = null;
 
     /**
-     * @var DateTime
+     * @var DateTime|null
      */
-    public $transactionTimestamp = null;
+    public ?DateTime $transactionTimestamp = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->operationId)) {
@@ -48,10 +48,11 @@ class ApiRefundReversalRequest extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): ApiRefundReversalRequest
     {
         parent::fromObject($object);
         if (property_exists($object, 'operationId')) {

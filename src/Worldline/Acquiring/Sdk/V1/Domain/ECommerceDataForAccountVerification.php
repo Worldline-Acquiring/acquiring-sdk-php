@@ -13,19 +13,19 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class ECommerceDataForAccountVerification extends DataObject
 {
     /**
-     * @var AddressVerificationData
+     * @var AddressVerificationData|null
      */
-    public $addressVerificationData = null;
+    public ?AddressVerificationData $addressVerificationData = null;
 
     /**
-     * @var ThreeDSecure
+     * @var ThreeDSecure|null
      */
-    public $threeDSecure = null;
+    public ?ThreeDSecure $threeDSecure = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->addressVerificationData)) {
@@ -39,10 +39,11 @@ class ECommerceDataForAccountVerification extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): ECommerceDataForAccountVerification
     {
         parent::fromObject($object);
         if (property_exists($object, 'addressVerificationData')) {

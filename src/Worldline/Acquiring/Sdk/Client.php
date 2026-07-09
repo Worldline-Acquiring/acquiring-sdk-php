@@ -9,11 +9,15 @@ use Worldline\Acquiring\Sdk\V1\V1Client;
 
 /**
  * Worldline Acquiring platform client.
+ *
+ * @package Worldline\Acquiring\Sdk
  */
 class Client extends ApiResource
 {
-    /** @var Communicator */
-    private $communicator;
+    /**
+     * @var Communicator
+     */
+    private Communicator $communicator;
 
     /**
      * Construct a new Worldline Acquiring platform API client.
@@ -30,28 +34,30 @@ class Client extends ApiResource
     /**
      * @return Communicator
      */
-    protected function getCommunicator()
+    protected function getCommunicator(): Communicator
     {
         return $this->communicator;
     }
 
     /**
      * @param CommunicatorLogger $communicatorLogger
+     *
+     * @return void
      */
-    public function enableLogging(CommunicatorLogger $communicatorLogger)
+    public function enableLogging(CommunicatorLogger $communicatorLogger): void
     {
         $this->getCommunicator()->enableLogging($communicatorLogger);
     }
 
     /**
-     *
+     * @return void
      */
-    public function disableLogging()
+    public function disableLogging(): void
     {
         $this->getCommunicator()->disableLogging();
     }
 
-    public function v1()
+    public function v1(): V1Client
     {
         return new V1Client($this, $this->context);
     }

@@ -13,29 +13,29 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class ServiceLocationAddress extends DataObject
 {
     /**
-     * @var string
+     * @var string|null
      */
-    public $city = null;
+    public ?string $city = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $countryCode = null;
+    public ?string $countryCode = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $countrySubdivisionCode = null;
+    public ?string $countrySubdivisionCode = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $postalCode = null;
+    public ?string $postalCode = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->city)) {
@@ -55,10 +55,11 @@ class ServiceLocationAddress extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): ServiceLocationAddress
     {
         parent::fromObject($object);
         if (property_exists($object, 'city')) {

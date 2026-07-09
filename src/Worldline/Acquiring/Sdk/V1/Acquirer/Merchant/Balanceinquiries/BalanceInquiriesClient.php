@@ -20,28 +20,32 @@ use Worldline\Acquiring\Sdk\V1\ValidationException;
 
 /**
  * BalanceInquiries client.
+ *
+ * @package Worldline\Acquiring\Sdk\V1\Acquirer\Merchant\Balanceinquiries
  */
 class BalanceInquiriesClient extends ApiResource
 {
-    /** @var ExceptionFactory|null */
-    private $responseExceptionFactory = null;
+    /**
+     * @var ExceptionFactory|null
+     */
+    private ?ExceptionFactory $responseExceptionFactory = null;
 
     /**
      * Resource /processing/v1/{acquirerId}/{merchantId}/balance-inquiries - Balance inquiry
      *
      * @param ApiBalanceInquiryRequest $body
-     * @param CallContext|null $callContext
-     * @return ApiBalanceInquiryResponse
+     * @param CallContext|null         $callContext
      *
+     * @return ApiBalanceInquiryResponse
      * @throws ValidationException
      * @throws AuthorizationException
      * @throws ReferenceException
      * @throws PlatformException
      * @throws ApiException
      * @throws InvalidResponseException
-     * @link https://docs.acquiring.worldline-solutions.com/api-reference#tag/Balance-Inquiries/operation/processBalanceInquiry Balance inquiry
+     * @link   https://docs.acquiring.worldline-solutions.com/api-reference#tag/Balance-Inquiries/operation/processBalanceInquiry Balance inquiry
      */
-    public function processBalanceInquiry(ApiBalanceInquiryRequest $body, CallContext $callContext = null)
+    public function processBalanceInquiry(ApiBalanceInquiryRequest $body, ?CallContext $callContext = null): ApiBalanceInquiryResponse
     {
         $responseClassMap = new ResponseClassMap();
         $responseClassMap->defaultSuccessResponseClassName = '\Worldline\Acquiring\Sdk\V1\Domain\ApiBalanceInquiryResponse';
@@ -63,8 +67,10 @@ class BalanceInquiriesClient extends ApiResource
         }
     }
 
-    /** @return ExceptionFactory */
-    private function getResponseExceptionFactory()
+    /**
+     * @return ExceptionFactory
+     */
+    private function getResponseExceptionFactory(): ExceptionFactory
     {
         if (is_null($this->responseExceptionFactory)) {
             $this->responseExceptionFactory = new ExceptionFactory();

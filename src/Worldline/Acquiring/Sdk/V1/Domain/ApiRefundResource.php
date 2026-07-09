@@ -14,54 +14,54 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class ApiRefundResource extends DataObject
 {
     /**
-     * @var CardPaymentDataForResource
+     * @var CardPaymentDataForResource|null
      */
-    public $cardPaymentData = null;
+    public ?CardPaymentDataForResource $cardPaymentData = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $initialAuthorizationCode = null;
+    public ?string $initialAuthorizationCode = null;
 
     /**
-     * @var SubOperationForRefund[]
+     * @var SubOperationForRefund[]|null
      */
-    public $operations = null;
+    public ?array $operations = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $referencedPaymentId = null;
+    public ?string $referencedPaymentId = null;
 
     /**
-     * @var ApiReferencesForResponses
+     * @var ApiReferencesForResponses|null
      */
-    public $references = null;
+    public ?ApiReferencesForResponses $references = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $refundId = null;
+    public ?string $refundId = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $status = null;
+    public ?string $status = null;
 
     /**
-     * @var DateTime
+     * @var DateTime|null
      */
-    public $statusTimestamp = null;
+    public ?DateTime $statusTimestamp = null;
 
     /**
-     * @var AmountData
+     * @var AmountData|null
      */
-    public $totalAuthorizedAmount = null;
+    public ?AmountData $totalAuthorizedAmount = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->cardPaymentData)) {
@@ -101,10 +101,11 @@ class ApiRefundResource extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): ApiRefundResource
     {
         parent::fromObject($object);
         if (property_exists($object, 'cardPaymentData')) {

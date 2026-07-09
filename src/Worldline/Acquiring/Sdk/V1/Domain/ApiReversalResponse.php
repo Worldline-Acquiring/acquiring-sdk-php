@@ -12,14 +12,14 @@ use UnexpectedValueException;
 class ApiReversalResponse extends ApiActionResponse
 {
     /**
-     * @var AmountData
+     * @var AmountData|null
      */
-    public $totalAuthorizedAmount = null;
+    public ?AmountData $totalAuthorizedAmount = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->totalAuthorizedAmount)) {
@@ -30,10 +30,11 @@ class ApiReversalResponse extends ApiActionResponse
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): ApiReversalResponse
     {
         parent::fromObject($object);
         if (property_exists($object, 'totalAuthorizedAmount')) {

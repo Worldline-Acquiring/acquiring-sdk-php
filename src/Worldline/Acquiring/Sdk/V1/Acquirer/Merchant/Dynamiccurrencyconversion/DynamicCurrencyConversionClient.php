@@ -11,7 +11,7 @@ use Worldline\Acquiring\Sdk\Communication\InvalidResponseException;
 use Worldline\Acquiring\Sdk\Communication\ResponseClassMap;
 use Worldline\Acquiring\Sdk\V1\ApiException;
 use Worldline\Acquiring\Sdk\V1\AuthorizationException;
-use Worldline\Acquiring\Sdk\V1\Domain\GetDCCRateRequest;
+use Worldline\Acquiring\Sdk\V1\Domain\GetDccRateRequest;
 use Worldline\Acquiring\Sdk\V1\Domain\GetDccRateResponse;
 use Worldline\Acquiring\Sdk\V1\ExceptionFactory;
 use Worldline\Acquiring\Sdk\V1\PlatformException;
@@ -20,28 +20,32 @@ use Worldline\Acquiring\Sdk\V1\ValidationException;
 
 /**
  * DynamicCurrencyConversion client.
+ *
+ * @package Worldline\Acquiring\Sdk\V1\Acquirer\Merchant\Dynamiccurrencyconversion
  */
 class DynamicCurrencyConversionClient extends ApiResource
 {
-    /** @var ExceptionFactory|null */
-    private $responseExceptionFactory = null;
+    /**
+     * @var ExceptionFactory|null
+     */
+    private ?ExceptionFactory $responseExceptionFactory = null;
 
     /**
      * Resource /services/v1/{acquirerId}/{merchantId}/dcc-rates - Request DCC rate
      *
-     * @param GetDCCRateRequest $body
-     * @param CallContext|null $callContext
-     * @return GetDccRateResponse
+     * @param GetDccRateRequest $body
+     * @param CallContext|null  $callContext
      *
+     * @return GetDccRateResponse
      * @throws ValidationException
      * @throws AuthorizationException
      * @throws ReferenceException
      * @throws PlatformException
      * @throws ApiException
      * @throws InvalidResponseException
-     * @link https://docs.acquiring.worldline-solutions.com/api-reference#tag/Dynamic-Currency-Conversion/operation/requestDccRate Request DCC rate
+     * @link   https://docs.acquiring.worldline-solutions.com/api-reference#tag/Dynamic-Currency-Conversion/operation/requestDccRate Request DCC rate
      */
-    public function requestDccRate(GetDCCRateRequest $body, CallContext $callContext = null)
+    public function requestDccRate(GetDccRateRequest $body, ?CallContext $callContext = null): GetDccRateResponse
     {
         $responseClassMap = new ResponseClassMap();
         $responseClassMap->defaultSuccessResponseClassName = '\Worldline\Acquiring\Sdk\V1\Domain\GetDccRateResponse';
@@ -63,8 +67,10 @@ class DynamicCurrencyConversionClient extends ApiResource
         }
     }
 
-    /** @return ExceptionFactory */
-    private function getResponseExceptionFactory()
+    /**
+     * @return ExceptionFactory
+     */
+    private function getResponseExceptionFactory(): ExceptionFactory
     {
         if (is_null($this->responseExceptionFactory)) {
             $this->responseExceptionFactory = new ExceptionFactory();

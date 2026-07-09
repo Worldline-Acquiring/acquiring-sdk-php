@@ -2,7 +2,7 @@
 /*
  * This file was automatically generated.
  */
-namespace Worldline\Acquiring\Sdk\V1\Acquirer\Merchant\Refunds;
+namespace Worldline\Acquiring\Sdk\V1\Acquirer\Merchant\Cardrefunds;
 
 use Worldline\Acquiring\Sdk\ApiResource;
 use Worldline\Acquiring\Sdk\CallContext;
@@ -23,29 +23,33 @@ use Worldline\Acquiring\Sdk\V1\ReferenceException;
 use Worldline\Acquiring\Sdk\V1\ValidationException;
 
 /**
- * Refunds client.
+ * CardRefunds client.
+ *
+ * @package Worldline\Acquiring\Sdk\V1\Acquirer\Merchant\Cardrefunds
  */
-class RefundsClient extends ApiResource
+class CardRefundsClient extends ApiResource
 {
-    /** @var ExceptionFactory|null */
-    private $responseExceptionFactory = null;
+    /**
+     * @var ExceptionFactory|null
+     */
+    private ?ExceptionFactory $responseExceptionFactory = null;
 
     /**
-     * Resource /processing/v1/{acquirerId}/{merchantId}/refunds - Create standalone refund
+     * Resource /processing/v1/{acquirerId}/{merchantId}/refunds - Create standalone card refund
      *
      * @param ApiRefundRequest $body
      * @param CallContext|null $callContext
-     * @return ApiRefundResponse
      *
+     * @return ApiRefundResponse
      * @throws ValidationException
      * @throws AuthorizationException
      * @throws ReferenceException
      * @throws PlatformException
      * @throws ApiException
      * @throws InvalidResponseException
-     * @link https://docs.acquiring.worldline-solutions.com/api-reference#tag/Refunds/operation/processStandaloneRefund Create standalone refund
+     * @link   https://docs.acquiring.worldline-solutions.com/api-reference#tag/Card-Refunds/operation/processStandaloneRefund Create standalone card refund
      */
-    public function processStandaloneRefund(ApiRefundRequest $body, CallContext $callContext = null)
+    public function processStandaloneRefund(ApiRefundRequest $body, ?CallContext $callContext = null): ApiRefundResponse
     {
         $responseClassMap = new ResponseClassMap();
         $responseClassMap->defaultSuccessResponseClassName = '\Worldline\Acquiring\Sdk\V1\Domain\ApiRefundResponse';
@@ -68,22 +72,22 @@ class RefundsClient extends ApiResource
     }
 
     /**
-     * Resource /processing/v1/{acquirerId}/{merchantId}/refunds/{refundId} - Retrieve refund
+     * Resource /processing/v1/{acquirerId}/{merchantId}/refunds/{refundId} - Retrieve card refund
      *
-     * @param string $refundId
-     * @param GetRefundParams $query
+     * @param string           $refundId
+     * @param GetRefundParams  $query
      * @param CallContext|null $callContext
-     * @return ApiRefundResource
      *
+     * @return ApiRefundResource
      * @throws ValidationException
      * @throws AuthorizationException
      * @throws ReferenceException
      * @throws PlatformException
      * @throws ApiException
      * @throws InvalidResponseException
-     * @link https://docs.acquiring.worldline-solutions.com/api-reference#tag/Refunds/operation/getRefund Retrieve refund
+     * @link   https://docs.acquiring.worldline-solutions.com/api-reference#tag/Card-Refunds/operation/getRefund Retrieve card refund
      */
-    public function getRefund($refundId, GetRefundParams $query, CallContext $callContext = null)
+    public function getRefund(string $refundId, GetRefundParams $query, ?CallContext $callContext = null): ApiRefundResource
     {
         $this->context['refundId'] = $refundId;
         $responseClassMap = new ResponseClassMap();
@@ -108,20 +112,20 @@ class RefundsClient extends ApiResource
     /**
      * Resource /processing/v1/{acquirerId}/{merchantId}/refunds/{refundId}/captures - Capture refund
      *
-     * @param string $refundId
+     * @param string                     $refundId
      * @param ApiCaptureRequestForRefund $body
-     * @param CallContext|null $callContext
-     * @return ApiActionResponseForRefund
+     * @param CallContext|null           $callContext
      *
+     * @return ApiActionResponseForRefund
      * @throws ValidationException
      * @throws AuthorizationException
      * @throws ReferenceException
      * @throws PlatformException
      * @throws ApiException
      * @throws InvalidResponseException
-     * @link https://docs.acquiring.worldline-solutions.com/api-reference#tag/Refunds/operation/captureRefund Capture refund
+     * @link   https://docs.acquiring.worldline-solutions.com/api-reference#tag/Card-Refunds/operation/captureRefund Capture refund
      */
-    public function captureRefund($refundId, ApiCaptureRequestForRefund $body, CallContext $callContext = null)
+    public function captureRefund(string $refundId, ApiCaptureRequestForRefund $body, ?CallContext $callContext = null): ApiActionResponseForRefund
     {
         $this->context['refundId'] = $refundId;
         $responseClassMap = new ResponseClassMap();
@@ -147,20 +151,20 @@ class RefundsClient extends ApiResource
     /**
      * Resource /processing/v1/{acquirerId}/{merchantId}/refunds/{refundId}/authorization-reversals - Reverse refund authorization
      *
-     * @param string $refundId
+     * @param string                   $refundId
      * @param ApiRefundReversalRequest $body
-     * @param CallContext|null $callContext
-     * @return ApiActionResponseForRefund
+     * @param CallContext|null         $callContext
      *
+     * @return ApiActionResponseForRefund
      * @throws ValidationException
      * @throws AuthorizationException
      * @throws ReferenceException
      * @throws PlatformException
      * @throws ApiException
      * @throws InvalidResponseException
-     * @link https://docs.acquiring.worldline-solutions.com/api-reference#tag/Refunds/operation/reverseRefundAuthorization Reverse refund authorization
+     * @link   https://docs.acquiring.worldline-solutions.com/api-reference#tag/Card-Refunds/operation/reverseRefundAuthorization Reverse refund authorization
      */
-    public function reverseRefundAuthorization($refundId, ApiRefundReversalRequest $body, CallContext $callContext = null)
+    public function reverseRefundAuthorization(string $refundId, ApiRefundReversalRequest $body, ?CallContext $callContext = null): ApiActionResponseForRefund
     {
         $this->context['refundId'] = $refundId;
         $responseClassMap = new ResponseClassMap();
@@ -183,8 +187,10 @@ class RefundsClient extends ApiResource
         }
     }
 
-    /** @return ExceptionFactory */
-    private function getResponseExceptionFactory()
+    /**
+     * @return ExceptionFactory
+     */
+    private function getResponseExceptionFactory(): ExceptionFactory
     {
         if (is_null($this->responseExceptionFactory)) {
             $this->responseExceptionFactory = new ExceptionFactory();

@@ -13,19 +13,19 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class PointOfSaleDataForDcc extends DataObject
 {
     /**
-     * @var string
+     * @var string|null
      */
-    public $terminalCountryCode = null;
+    public ?string $terminalCountryCode = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $terminalId = null;
+    public ?string $terminalId = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->terminalCountryCode)) {
@@ -39,10 +39,11 @@ class PointOfSaleDataForDcc extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): PointOfSaleDataForDcc
     {
         parent::fromObject($object);
         if (property_exists($object, 'terminalCountryCode')) {

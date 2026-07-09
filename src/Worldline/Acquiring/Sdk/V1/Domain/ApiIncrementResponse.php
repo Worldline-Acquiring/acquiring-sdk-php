@@ -12,19 +12,19 @@ use UnexpectedValueException;
 class ApiIncrementResponse extends ApiActionResponse
 {
     /**
-     * @var string
+     * @var string|null
      */
-    public $authorizationCode = null;
+    public ?string $authorizationCode = null;
 
     /**
-     * @var AmountData
+     * @var AmountData|null
      */
-    public $totalAuthorizedAmount = null;
+    public ?AmountData $totalAuthorizedAmount = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->authorizationCode)) {
@@ -38,10 +38,11 @@ class ApiIncrementResponse extends ApiActionResponse
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): ApiIncrementResponse
     {
         parent::fromObject($object);
         if (property_exists($object, 'authorizationCode')) {

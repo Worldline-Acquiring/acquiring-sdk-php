@@ -7,34 +7,36 @@ namespace Worldline\Acquiring\Sdk\V1\Acquirer\Merchant;
 use Worldline\Acquiring\Sdk\ApiResource;
 use Worldline\Acquiring\Sdk\V1\Acquirer\Merchant\Accountverifications\AccountVerificationsClient;
 use Worldline\Acquiring\Sdk\V1\Acquirer\Merchant\Balanceinquiries\BalanceInquiriesClient;
+use Worldline\Acquiring\Sdk\V1\Acquirer\Merchant\Cardpayments\CardPaymentsClient;
+use Worldline\Acquiring\Sdk\V1\Acquirer\Merchant\Cardrefunds\CardRefundsClient;
 use Worldline\Acquiring\Sdk\V1\Acquirer\Merchant\Dynamiccurrencyconversion\DynamicCurrencyConversionClient;
-use Worldline\Acquiring\Sdk\V1\Acquirer\Merchant\Payments\PaymentsClient;
-use Worldline\Acquiring\Sdk\V1\Acquirer\Merchant\Refunds\RefundsClient;
 use Worldline\Acquiring\Sdk\V1\Acquirer\Merchant\Technicalreversals\TechnicalReversalsClient;
 
 /**
  * Merchant client.
+ *
+ * @package Worldline\Acquiring\Sdk\V1\Acquirer\Merchant
  */
 class MerchantClient extends ApiResource
 {
     /**
      * Resource /processing/v1/{acquirerId}/{merchantId}/payments
      *
-     * @return PaymentsClient
+     * @return CardPaymentsClient
      */
-    public function payments()
+    public function cardPayments(): CardPaymentsClient
     {
-        return new PaymentsClient($this, $this->context);
+        return new CardPaymentsClient($this, $this->context);
     }
 
     /**
      * Resource /processing/v1/{acquirerId}/{merchantId}/refunds
      *
-     * @return RefundsClient
+     * @return CardRefundsClient
      */
-    public function refunds()
+    public function cardRefunds(): CardRefundsClient
     {
-        return new RefundsClient($this, $this->context);
+        return new CardRefundsClient($this, $this->context);
     }
 
     /**
@@ -42,7 +44,7 @@ class MerchantClient extends ApiResource
      *
      * @return AccountVerificationsClient
      */
-    public function accountVerifications()
+    public function accountVerifications(): AccountVerificationsClient
     {
         return new AccountVerificationsClient($this, $this->context);
     }
@@ -52,7 +54,7 @@ class MerchantClient extends ApiResource
      *
      * @return BalanceInquiriesClient
      */
-    public function balanceInquiries()
+    public function balanceInquiries(): BalanceInquiriesClient
     {
         return new BalanceInquiriesClient($this, $this->context);
     }
@@ -62,7 +64,7 @@ class MerchantClient extends ApiResource
      *
      * @return TechnicalReversalsClient
      */
-    public function technicalReversals()
+    public function technicalReversals(): TechnicalReversalsClient
     {
         return new TechnicalReversalsClient($this, $this->context);
     }
@@ -72,7 +74,7 @@ class MerchantClient extends ApiResource
      *
      * @return DynamicCurrencyConversionClient
      */
-    public function dynamicCurrencyConversion()
+    public function dynamicCurrencyConversion(): DynamicCurrencyConversionClient
     {
         return new DynamicCurrencyConversionClient($this, $this->context);
     }

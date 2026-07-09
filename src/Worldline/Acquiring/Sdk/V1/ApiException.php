@@ -14,20 +14,22 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
  */
 class ApiException extends RuntimeException
 {
-    /** @var int */
-    private $httpStatusCode;
+    /**
+     * @var int
+     */
+    private int $httpStatusCode;
 
     /**
      * @var DataObject
      */
-    private $response;
+    private DataObject $response;
 
     /**
-     * @param int $httpStatusCode
-     * @param DataObject $response
-     * @param string $message
+     * @param int         $httpStatusCode
+     * @param DataObject  $response
+     * @param string|null $message
      */
-    public function __construct($httpStatusCode, DataObject $response, $message = null)
+    public function __construct(int $httpStatusCode, DataObject $response, ?string $message = null)
     {
         if (is_null($message)) {
             $message = 'The Worldline Acquiring platform returned an error response';
@@ -37,7 +39,7 @@ class ApiException extends RuntimeException
         $this->response = $response;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "exception '%s' with message '%s'. in %s:%d\nHTTP status code: %s\nResponse:\n%s\nStack trace:\n%s",
@@ -54,7 +56,7 @@ class ApiException extends RuntimeException
     /**
      * @return int
      */
-    public function getHttpStatusCode()
+    public function getHttpStatusCode(): int
     {
         return $this->httpStatusCode;
     }
@@ -62,15 +64,15 @@ class ApiException extends RuntimeException
     /**
      * @return DataObject
      */
-    public function getResponse()
+    public function getResponse(): DataObject
     {
         return $this->response;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getType()
+    public function getType(): ?string
     {
         $responseVariables = get_object_vars($this->getResponse());
         if (!array_key_exists('type', $responseVariables)) {
@@ -80,9 +82,9 @@ class ApiException extends RuntimeException
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         $responseVariables = get_object_vars($this->getResponse());
         if (!array_key_exists('title', $responseVariables)) {
@@ -92,9 +94,9 @@ class ApiException extends RuntimeException
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getStatus()
+    public function getStatus(): ?int
     {
         $responseVariables = get_object_vars($this->getResponse());
         if (!array_key_exists('status', $responseVariables)) {
@@ -104,9 +106,9 @@ class ApiException extends RuntimeException
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getDetail()
+    public function getDetail(): ?string
     {
         $responseVariables = get_object_vars($this->getResponse());
         if (!array_key_exists('detail', $responseVariables)) {
@@ -116,9 +118,9 @@ class ApiException extends RuntimeException
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getInstance()
+    public function getInstance(): ?string
     {
         $responseVariables = get_object_vars($this->getResponse());
         if (!array_key_exists('instance', $responseVariables)) {

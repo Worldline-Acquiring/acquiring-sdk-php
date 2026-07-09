@@ -13,34 +13,39 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class ApiPaymentErrorResponse extends DataObject
 {
     /**
-     * @var string
+     * @var string|null
      */
-    public $detail = null;
+    public ?string $detail = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $instance = null;
+    public ?string $instance = null;
 
     /**
-     * @var int
+     * @var string|null
      */
-    public $status = null;
+    public ?string $requestId = null;
 
     /**
-     * @var string
+     * @var int|null
      */
-    public $title = null;
+    public ?int $status = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $type = null;
+    public ?string $title = null;
+
+    /**
+     * @var string|null
+     */
+    public ?string $type = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->detail)) {
@@ -48,6 +53,9 @@ class ApiPaymentErrorResponse extends DataObject
         }
         if (!is_null($this->instance)) {
             $object->instance = $this->instance;
+        }
+        if (!is_null($this->requestId)) {
+            $object->requestId = $this->requestId;
         }
         if (!is_null($this->status)) {
             $object->status = $this->status;
@@ -63,10 +71,11 @@ class ApiPaymentErrorResponse extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): ApiPaymentErrorResponse
     {
         parent::fromObject($object);
         if (property_exists($object, 'detail')) {
@@ -74,6 +83,9 @@ class ApiPaymentErrorResponse extends DataObject
         }
         if (property_exists($object, 'instance')) {
             $this->instance = $object->instance;
+        }
+        if (property_exists($object, 'requestId')) {
+            $this->requestId = $object->requestId;
         }
         if (property_exists($object, 'status')) {
             $this->status = $object->status;

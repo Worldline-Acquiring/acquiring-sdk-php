@@ -13,44 +13,44 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class MerchantData extends DataObject
 {
     /**
-     * @var string
+     * @var string|null
      */
-    public $address = null;
+    public ?string $address = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $city = null;
+    public ?string $city = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $countryCode = null;
+    public ?string $countryCode = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    public $merchantCategoryCode = null;
+    public ?int $merchantCategoryCode = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $name = null;
+    public ?string $name = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $postalCode = null;
+    public ?string $postalCode = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $stateCode = null;
+    public ?string $stateCode = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->address)) {
@@ -79,10 +79,11 @@ class MerchantData extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): MerchantData
     {
         parent::fromObject($object);
         if (property_exists($object, 'address')) {

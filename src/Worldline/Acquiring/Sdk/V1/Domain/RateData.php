@@ -14,34 +14,34 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class RateData extends DataObject
 {
     /**
-     * @var float
+     * @var float|null
      */
-    public $exchangeRate = null;
+    public ?float $exchangeRate = null;
 
     /**
-     * @var float
+     * @var float|null
      */
-    public $invertedExchangeRate = null;
+    public ?float $invertedExchangeRate = null;
 
     /**
-     * @var float
+     * @var float|null
      */
-    public $markUp = null;
+    public ?float $markUp = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $markUpBasis = null;
+    public ?string $markUpBasis = null;
 
     /**
-     * @var DateTime
+     * @var DateTime|null
      */
-    public $quotationDateTime = null;
+    public ?DateTime $quotationDateTime = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->exchangeRate)) {
@@ -64,10 +64,11 @@ class RateData extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): RateData
     {
         parent::fromObject($object);
         if (property_exists($object, 'exchangeRate')) {

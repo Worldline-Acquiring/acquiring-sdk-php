@@ -13,44 +13,44 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class ApiActionResponseForRefund extends DataObject
 {
     /**
-     * @var AdditionalResponseData
+     * @var AdditionalResponseData|null
      */
-    public $additionalResponseData = null;
+    public ?AdditionalResponseData $additionalResponseData = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $operationId = null;
+    public ?string $operationId = null;
 
     /**
-     * @var ApiRefundSummaryForResponse
+     * @var ApiRefundSummaryForResponse|null
      */
-    public $refund = null;
+    public ?ApiRefundSummaryForResponse $refund = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $responder = null;
+    public ?string $responder = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $responseCode = null;
+    public ?string $responseCode = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $responseCodeCategory = null;
+    public ?string $responseCodeCategory = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $responseCodeDescription = null;
+    public ?string $responseCodeDescription = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->additionalResponseData)) {
@@ -79,10 +79,11 @@ class ApiActionResponseForRefund extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): ApiActionResponseForRefund
     {
         parent::fromObject($object);
         if (property_exists($object, 'additionalResponseData')) {

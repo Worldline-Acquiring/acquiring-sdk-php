@@ -13,19 +13,19 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class EmvDataItem extends DataObject
 {
     /**
-     * @var string
+     * @var string|null
      */
-    public $tag = null;
+    public ?string $tag = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $value = null;
+    public ?string $value = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->tag)) {
@@ -39,10 +39,11 @@ class EmvDataItem extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): EmvDataItem
     {
         parent::fromObject($object);
         if (property_exists($object, 'tag')) {

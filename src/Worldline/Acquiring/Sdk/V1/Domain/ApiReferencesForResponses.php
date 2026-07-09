@@ -13,24 +13,29 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class ApiReferencesForResponses extends DataObject
 {
     /**
-     * @var string
+     * @var string|null
      */
-    public $paymentAccountReference = null;
+    public ?string $paymentAccountReference = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $retrievalReferenceNumber = null;
+    public ?string $retrievalReferenceNumber = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $schemeTransactionId = null;
+    public ?string $schemeTransactionId = null;
+
+    /**
+     * @var string|null
+     */
+    public ?string $schemeTransactionLinkId = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->paymentAccountReference)) {
@@ -42,15 +47,19 @@ class ApiReferencesForResponses extends DataObject
         if (!is_null($this->schemeTransactionId)) {
             $object->schemeTransactionId = $this->schemeTransactionId;
         }
+        if (!is_null($this->schemeTransactionLinkId)) {
+            $object->schemeTransactionLinkId = $this->schemeTransactionLinkId;
+        }
         return $object;
     }
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): ApiReferencesForResponses
     {
         parent::fromObject($object);
         if (property_exists($object, 'paymentAccountReference')) {
@@ -61,6 +70,9 @@ class ApiReferencesForResponses extends DataObject
         }
         if (property_exists($object, 'schemeTransactionId')) {
             $this->schemeTransactionId = $object->schemeTransactionId;
+        }
+        if (property_exists($object, 'schemeTransactionLinkId')) {
+            $this->schemeTransactionLinkId = $object->schemeTransactionLinkId;
         }
         return $this;
     }

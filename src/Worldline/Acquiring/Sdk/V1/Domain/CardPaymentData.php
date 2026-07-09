@@ -13,74 +13,74 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class CardPaymentData extends DataObject
 {
     /**
-     * @var bool
+     * @var bool|null
      */
-    public $allowPartialApproval = null;
+    public ?bool $allowPartialApproval = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $brand = null;
+    public ?string $brand = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $brandSelector = null;
+    public ?string $brandSelector = null;
 
     /**
-     * @var bool
+     * @var bool|null
      */
-    public $captureImmediately = null;
+    public ?bool $captureImmediately = null;
 
     /**
-     * @var PlainCardData
+     * @var PlainCardData|null
      */
-    public $cardData = null;
+    public ?PlainCardData $cardData = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $cardEntryMode = null;
+    public ?string $cardEntryMode = null;
 
     /**
-     * @var CardOnFileData
+     * @var CardOnFileData|null
      */
-    public $cardOnFileData = null;
+    public ?CardOnFileData $cardOnFileData = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $cardholderVerificationMethod = null;
+    public ?string $cardholderVerificationMethod = null;
 
     /**
-     * @var ECommerceData
+     * @var ECommerceData|null
      */
-    public $ecommerceData = null;
+    public ?ECommerceData $ecommerceData = null;
 
     /**
-     * @var NetworkTokenData
+     * @var NetworkTokenData|null
      */
-    public $networkTokenData = null;
+    public ?NetworkTokenData $networkTokenData = null;
 
     /**
-     * @var PointOfSaleData
+     * @var PointOfSaleData|null
      */
-    public $pointOfSaleData = null;
+    public ?PointOfSaleData $pointOfSaleData = null;
 
     /**
-     * @var ServiceLocationData
+     * @var ServiceLocationData|null
      */
-    public $serviceLocationData = null;
+    public ?ServiceLocationData $serviceLocationData = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $walletId = null;
+    public ?string $walletId = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->allowPartialApproval)) {
@@ -127,10 +127,11 @@ class CardPaymentData extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): CardPaymentData
     {
         parent::fromObject($object);
         if (property_exists($object, 'allowPartialApproval')) {

@@ -14,49 +14,49 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class SubOperation extends DataObject
 {
     /**
-     * @var AmountData
+     * @var AmountData|null
      */
-    public $amount = null;
+    public ?AmountData $amount = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $authorizationCode = null;
+    public ?string $authorizationCode = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $operationId = null;
+    public ?string $operationId = null;
 
     /**
-     * @var DateTime
+     * @var DateTime|null
      */
-    public $operationTimestamp = null;
+    public ?DateTime $operationTimestamp = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $operationType = null;
+    public ?string $operationType = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $responseCode = null;
+    public ?string $responseCode = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $responseCodeCategory = null;
+    public ?string $responseCodeCategory = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $responseCodeDescription = null;
+    public ?string $responseCodeDescription = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->amount)) {
@@ -88,10 +88,11 @@ class SubOperation extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): SubOperation
     {
         parent::fromObject($object);
         if (property_exists($object, 'amount')) {

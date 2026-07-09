@@ -13,29 +13,29 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class DccProposal extends DataObject
 {
     /**
-     * @var AmountData
+     * @var AmountData|null
      */
-    public $originalAmount = null;
+    public ?AmountData $originalAmount = null;
 
     /**
-     * @var RateData
+     * @var RateData|null
      */
-    public $rate = null;
+    public ?RateData $rate = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $rateReferenceId = null;
+    public ?string $rateReferenceId = null;
 
     /**
-     * @var AmountData
+     * @var AmountData|null
      */
-    public $resultingAmount = null;
+    public ?AmountData $resultingAmount = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->originalAmount)) {
@@ -55,10 +55,11 @@ class DccProposal extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): DccProposal
     {
         parent::fromObject($object);
         if (property_exists($object, 'originalAmount')) {

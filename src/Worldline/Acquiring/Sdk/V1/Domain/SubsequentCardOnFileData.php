@@ -13,24 +13,29 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class SubsequentCardOnFileData extends DataObject
 {
     /**
-     * @var string
+     * @var string|null
      */
-    public $cardOnFileInitiator = null;
+    public ?string $cardOnFileInitiator = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $initialSchemeTransactionId = null;
+    public ?string $initialSchemeTransactionId = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $transactionType = null;
+    public ?string $initialSchemeTransactionLinkId = null;
+
+    /**
+     * @var string|null
+     */
+    public ?string $transactionType = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->cardOnFileInitiator)) {
@@ -38,6 +43,9 @@ class SubsequentCardOnFileData extends DataObject
         }
         if (!is_null($this->initialSchemeTransactionId)) {
             $object->initialSchemeTransactionId = $this->initialSchemeTransactionId;
+        }
+        if (!is_null($this->initialSchemeTransactionLinkId)) {
+            $object->initialSchemeTransactionLinkId = $this->initialSchemeTransactionLinkId;
         }
         if (!is_null($this->transactionType)) {
             $object->transactionType = $this->transactionType;
@@ -47,10 +55,11 @@ class SubsequentCardOnFileData extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): SubsequentCardOnFileData
     {
         parent::fromObject($object);
         if (property_exists($object, 'cardOnFileInitiator')) {
@@ -58,6 +67,9 @@ class SubsequentCardOnFileData extends DataObject
         }
         if (property_exists($object, 'initialSchemeTransactionId')) {
             $this->initialSchemeTransactionId = $object->initialSchemeTransactionId;
+        }
+        if (property_exists($object, 'initialSchemeTransactionLinkId')) {
+            $this->initialSchemeTransactionLinkId = $object->initialSchemeTransactionLinkId;
         }
         if (property_exists($object, 'transactionType')) {
             $this->transactionType = $object->transactionType;

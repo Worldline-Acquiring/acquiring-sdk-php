@@ -13,24 +13,24 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class PointOfSaleDataForResponse extends DataObject
 {
     /**
-     * @var EmvDataItem[]
+     * @var EmvDataItem[]|null
      */
-    public $emvData = null;
+    public ?array $emvData = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $panLast4Digits = null;
+    public ?string $panLast4Digits = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    public $pinRetryCounter = null;
+    public ?int $pinRetryCounter = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->emvData)) {
@@ -52,10 +52,11 @@ class PointOfSaleDataForResponse extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): PointOfSaleDataForResponse
     {
         parent::fromObject($object);
         if (property_exists($object, 'emvData')) {

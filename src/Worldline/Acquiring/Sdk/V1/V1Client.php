@@ -10,6 +10,8 @@ use Worldline\Acquiring\Sdk\V1\Ping\PingClient;
 
 /**
  * V1 client
+ *
+ * @package Worldline\Acquiring\Sdk\V1
  */
 class V1Client extends ApiResource
 {
@@ -17,9 +19,10 @@ class V1Client extends ApiResource
      * Resource /processing/v1/{acquirerId}
      *
      * @param string $acquirerId
+     *
      * @return AcquirerClient
      */
-    public function acquirer($acquirerId)
+    public function acquirer(string $acquirerId): AcquirerClient
     {
         $newContext = $this->context;
         $newContext['acquirerId'] = $acquirerId;
@@ -31,7 +34,7 @@ class V1Client extends ApiResource
      *
      * @return PingClient
      */
-    public function ping()
+    public function ping(): PingClient
     {
         return new PingClient($this, $this->context);
     }

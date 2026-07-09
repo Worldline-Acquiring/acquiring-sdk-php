@@ -13,14 +13,14 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class CardPaymentDataForResource extends DataObject
 {
     /**
-     * @var string
+     * @var string|null
      */
-    public $brand = null;
+    public ?string $brand = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->brand)) {
@@ -31,10 +31,11 @@ class CardPaymentDataForResource extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): CardPaymentDataForResource
     {
         parent::fromObject($object);
         if (property_exists($object, 'brand')) {

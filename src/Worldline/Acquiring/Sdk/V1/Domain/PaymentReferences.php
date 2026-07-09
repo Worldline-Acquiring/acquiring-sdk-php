@@ -13,19 +13,19 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class PaymentReferences extends DataObject
 {
     /**
-     * @var string
+     * @var string|null
      */
-    public $dynamicDescriptor = null;
+    public ?string $dynamicDescriptor = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $merchantReference = null;
+    public ?string $merchantReference = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->dynamicDescriptor)) {
@@ -39,10 +39,11 @@ class PaymentReferences extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): PaymentReferences
     {
         parent::fromObject($object);
         if (property_exists($object, 'dynamicDescriptor')) {

@@ -13,34 +13,34 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class ApiTechnicalReversalResponse extends DataObject
 {
     /**
-     * @var string
+     * @var string|null
      */
-    public $operationId = null;
+    public ?string $operationId = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $responder = null;
+    public ?string $responder = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $responseCode = null;
+    public ?string $responseCode = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $responseCodeCategory = null;
+    public ?string $responseCodeCategory = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $responseCodeDescription = null;
+    public ?string $responseCodeDescription = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->operationId)) {
@@ -63,10 +63,11 @@ class ApiTechnicalReversalResponse extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): ApiTechnicalReversalResponse
     {
         parent::fromObject($object);
         if (property_exists($object, 'operationId')) {

@@ -13,59 +13,59 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class ApiBalanceInquiryResponse extends DataObject
 {
     /**
-     * @var AdditionalResponseData
+     * @var AdditionalResponseData|null
      */
-    public $additionalResponseData = null;
+    public ?AdditionalResponseData $additionalResponseData = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $authorizationCode = null;
+    public ?string $authorizationCode = null;
 
     /**
-     * @var AmountData
+     * @var AmountData|null
      */
-    public $availableAmount = null;
+    public ?AmountData $availableAmount = null;
 
     /**
-     * @var CardPaymentDataForResponse
+     * @var CardPaymentDataForResponse|null
      */
-    public $cardPaymentData = null;
+    public ?CardPaymentDataForResponse $cardPaymentData = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $operationId = null;
+    public ?string $operationId = null;
 
     /**
-     * @var ApiReferencesForResponses
+     * @var ApiReferencesForResponses|null
      */
-    public $references = null;
+    public ?ApiReferencesForResponses $references = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $responder = null;
+    public ?string $responder = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $responseCode = null;
+    public ?string $responseCode = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $responseCodeCategory = null;
+    public ?string $responseCodeCategory = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $responseCodeDescription = null;
+    public ?string $responseCodeDescription = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->additionalResponseData)) {
@@ -103,10 +103,11 @@ class ApiBalanceInquiryResponse extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): ApiBalanceInquiryResponse
     {
         parent::fromObject($object);
         if (property_exists($object, 'additionalResponseData')) {

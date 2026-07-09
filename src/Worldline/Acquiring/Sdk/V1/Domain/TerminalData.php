@@ -13,54 +13,54 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class TerminalData extends DataObject
 {
     /**
-     * @var bool
+     * @var bool|null
      */
-    public $allowSingleTap = null;
+    public ?bool $allowSingleTap = null;
 
     /**
-     * @var string[]
+     * @var string[]|null
      */
-    public $cardReadingCapabilities = null;
+    public ?array $cardReadingCapabilities = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $cardholderActivatedTerminalLevel = null;
+    public ?string $cardholderActivatedTerminalLevel = null;
 
     /**
-     * @var bool
+     * @var bool|null
      */
-    public $isAttendedTerminal = null;
+    public ?bool $isAttendedTerminal = null;
 
     /**
-     * @var bool
+     * @var bool|null
      */
-    public $isOfflineApproved = null;
+    public ?bool $isOfflineApproved = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $offlineAuthorizationResponseCode = null;
+    public ?string $offlineAuthorizationResponseCode = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $pinEntryCapability = null;
+    public ?string $pinEntryCapability = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $terminalId = null;
+    public ?string $terminalId = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $terminalLocation = null;
+    public ?string $terminalLocation = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->allowSingleTap)) {
@@ -100,10 +100,11 @@ class TerminalData extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): TerminalData
     {
         parent::fromObject($object);
         if (property_exists($object, 'allowSingleTap')) {

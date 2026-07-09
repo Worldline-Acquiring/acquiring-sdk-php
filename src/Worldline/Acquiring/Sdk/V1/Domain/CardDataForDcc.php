@@ -13,29 +13,29 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class CardDataForDcc extends DataObject
 {
     /**
-     * @var string
+     * @var string|null
      */
-    public $bin = null;
+    public ?string $bin = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $brand = null;
+    public ?string $brand = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $cardCountryCode = null;
+    public ?string $cardCountryCode = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $cardEntryMode = null;
+    public ?string $cardEntryMode = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->bin)) {
@@ -55,10 +55,11 @@ class CardDataForDcc extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): CardDataForDcc
     {
         parent::fromObject($object);
         if (property_exists($object, 'bin')) {

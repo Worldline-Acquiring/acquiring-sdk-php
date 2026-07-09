@@ -13,19 +13,19 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class AdditionalResponseData extends DataObject
 {
     /**
-     * @var string
+     * @var string|null
      */
-    public $merchantAdviceCode = null;
+    public ?string $merchantAdviceCode = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $merchantAdviceCodeDescription = null;
+    public ?string $merchantAdviceCodeDescription = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->merchantAdviceCode)) {
@@ -39,10 +39,11 @@ class AdditionalResponseData extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): AdditionalResponseData
     {
         parent::fromObject($object);
         if (property_exists($object, 'merchantAdviceCode')) {

@@ -15,16 +15,17 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class ExceptionFactory
 {
     /**
-     * @param int $httpStatusCode
-     * @param DataObject $errorObject
-     * @param CallContext $callContext
+     * @param int              $httpStatusCode
+     * @param DataObject       $errorObject
+     * @param CallContext|null $callContext
+     *
      * @return ApiException
      */
     public function createException(
-        $httpStatusCode,
-        DataObject $errorObject,
-        CallContext $callContext = null
-    ) {
+        int          $httpStatusCode,
+        DataObject   $errorObject,
+        ?CallContext $callContext = null
+    ): ApiException {
         if ($httpStatusCode === 400) {
             return new ValidationException($httpStatusCode, $errorObject);
         }

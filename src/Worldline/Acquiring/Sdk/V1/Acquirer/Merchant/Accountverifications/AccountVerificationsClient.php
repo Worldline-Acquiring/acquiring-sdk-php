@@ -20,28 +20,32 @@ use Worldline\Acquiring\Sdk\V1\ValidationException;
 
 /**
  * AccountVerifications client.
+ *
+ * @package Worldline\Acquiring\Sdk\V1\Acquirer\Merchant\Accountverifications
  */
 class AccountVerificationsClient extends ApiResource
 {
-    /** @var ExceptionFactory|null */
-    private $responseExceptionFactory = null;
+    /**
+     * @var ExceptionFactory|null
+     */
+    private ?ExceptionFactory $responseExceptionFactory = null;
 
     /**
      * Resource /processing/v1/{acquirerId}/{merchantId}/account-verifications - Verify account
      *
      * @param ApiAccountVerificationRequest $body
-     * @param CallContext|null $callContext
-     * @return ApiAccountVerificationResponse
+     * @param CallContext|null              $callContext
      *
+     * @return ApiAccountVerificationResponse
      * @throws ValidationException
      * @throws AuthorizationException
      * @throws ReferenceException
      * @throws PlatformException
      * @throws ApiException
      * @throws InvalidResponseException
-     * @link https://docs.acquiring.worldline-solutions.com/api-reference#tag/Account-Verifications/operation/processAccountVerification Verify account
+     * @link   https://docs.acquiring.worldline-solutions.com/api-reference#tag/Account-Verifications/operation/processAccountVerification Verify account
      */
-    public function processAccountVerification(ApiAccountVerificationRequest $body, CallContext $callContext = null)
+    public function processAccountVerification(ApiAccountVerificationRequest $body, ?CallContext $callContext = null): ApiAccountVerificationResponse
     {
         $responseClassMap = new ResponseClassMap();
         $responseClassMap->defaultSuccessResponseClassName = '\Worldline\Acquiring\Sdk\V1\Domain\ApiAccountVerificationResponse';
@@ -63,8 +67,10 @@ class AccountVerificationsClient extends ApiResource
         }
     }
 
-    /** @return ExceptionFactory */
-    private function getResponseExceptionFactory()
+    /**
+     * @return ExceptionFactory
+     */
+    private function getResponseExceptionFactory(): ExceptionFactory
     {
         if (is_null($this->responseExceptionFactory)) {
             $this->responseExceptionFactory = new ExceptionFactory();

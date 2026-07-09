@@ -14,53 +14,66 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class ApiCaptureRequest extends DataObject
 {
     /**
-     * @var AmountData
+     * @var AmountData|null
      */
-    public $amount = null;
+    public ?AmountData $amount = null;
 
     /**
-     * @var int
+     * @var CaptureAmountBreakdownData|null
      */
-    public $captureSequenceNumber = null;
+    public ?CaptureAmountBreakdownData $captureAmountBreakdownData = null;
 
     /**
-     * @var DccData
+     * @var int|null
      */
-    public $dynamicCurrencyConversion = null;
+    public ?int $captureSequenceNumber = null;
 
     /**
-     * @var bool
+     * @var DccData|null
      */
-    public $isFinal = null;
+    public ?DccData $dynamicCurrencyConversion = null;
 
     /**
-     * @var string
+     * @var bool|null
      */
-    public $operationId = null;
+    public ?bool $isFinal = null;
 
     /**
-     * @var PaymentReferences
+     * @var MarketplaceData|null
      */
-    public $references = null;
+    public ?MarketplaceData $marketplaceData = null;
 
     /**
-     * @var TerminalData
+     * @var string|null
      */
-    public $terminalData = null;
+    public ?string $operationId = null;
 
     /**
-     * @var DateTime
+     * @var PaymentReferences|null
      */
-    public $transactionTimestamp = null;
+    public ?PaymentReferences $references = null;
+
+    /**
+     * @var TerminalData|null
+     */
+    public ?TerminalData $terminalData = null;
+
+    /**
+     * @var DateTime|null
+     */
+    public ?DateTime $transactionTimestamp = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->amount)) {
             $object->amount = $this->amount->toObject();
+        }
+        if (!is_null($this->captureAmountBreakdownData)) {
+            $object->captureAmountBreakdownData = $this->captureAmountBreakdownData->toObject();
         }
         if (!is_null($this->captureSequenceNumber)) {
             $object->captureSequenceNumber = $this->captureSequenceNumber;
@@ -70,6 +83,9 @@ class ApiCaptureRequest extends DataObject
         }
         if (!is_null($this->isFinal)) {
             $object->isFinal = $this->isFinal;
+        }
+        if (!is_null($this->marketplaceData)) {
+            $object->marketplaceData = $this->marketplaceData->toObject();
         }
         if (!is_null($this->operationId)) {
             $object->operationId = $this->operationId;
@@ -88,10 +104,11 @@ class ApiCaptureRequest extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): ApiCaptureRequest
     {
         parent::fromObject($object);
         if (property_exists($object, 'amount')) {
@@ -100,6 +117,13 @@ class ApiCaptureRequest extends DataObject
             }
             $value = new AmountData();
             $this->amount = $value->fromObject($object->amount);
+        }
+        if (property_exists($object, 'captureAmountBreakdownData')) {
+            if (!is_object($object->captureAmountBreakdownData)) {
+                throw new UnexpectedValueException('value \'' . print_r($object->captureAmountBreakdownData, true) . '\' is not an object');
+            }
+            $value = new CaptureAmountBreakdownData();
+            $this->captureAmountBreakdownData = $value->fromObject($object->captureAmountBreakdownData);
         }
         if (property_exists($object, 'captureSequenceNumber')) {
             $this->captureSequenceNumber = $object->captureSequenceNumber;
@@ -113,6 +137,13 @@ class ApiCaptureRequest extends DataObject
         }
         if (property_exists($object, 'isFinal')) {
             $this->isFinal = $object->isFinal;
+        }
+        if (property_exists($object, 'marketplaceData')) {
+            if (!is_object($object->marketplaceData)) {
+                throw new UnexpectedValueException('value \'' . print_r($object->marketplaceData, true) . '\' is not an object');
+            }
+            $value = new MarketplaceData();
+            $this->marketplaceData = $value->fromObject($object->marketplaceData);
         }
         if (property_exists($object, 'operationId')) {
             $this->operationId = $object->operationId;

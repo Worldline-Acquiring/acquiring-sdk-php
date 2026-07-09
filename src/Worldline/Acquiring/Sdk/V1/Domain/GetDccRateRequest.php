@@ -10,42 +10,42 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 /**
  * @package Worldline\Acquiring\Sdk\V1\Domain
  */
-class GetDCCRateRequest extends DataObject
+class GetDccRateRequest extends DataObject
 {
     /**
-     * @var CardDataForDcc
+     * @var CardDataForDcc|null
      */
-    public $cardPaymentData = null;
+    public ?CardDataForDcc $cardPaymentData = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $operationId = null;
+    public ?string $operationId = null;
 
     /**
-     * @var PointOfSaleDataForDcc
+     * @var PointOfSaleDataForDcc|null
      */
-    public $pointOfSaleData = null;
+    public ?PointOfSaleDataForDcc $pointOfSaleData = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $rateReferenceId = null;
+    public ?string $rateReferenceId = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $targetCurrency = null;
+    public ?string $targetCurrency = null;
 
     /**
-     * @var TransactionDataForDcc
+     * @var TransactionDataForDcc|null
      */
-    public $transaction = null;
+    public ?TransactionDataForDcc $transaction = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->cardPaymentData)) {
@@ -71,10 +71,11 @@ class GetDCCRateRequest extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): GetDccRateRequest
     {
         parent::fromObject($object);
         if (property_exists($object, 'cardPaymentData')) {

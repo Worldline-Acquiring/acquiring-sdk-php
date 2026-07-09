@@ -13,39 +13,39 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class PointOfSaleData extends DataObject
 {
     /**
-     * @var EmvDataItem[]
+     * @var EmvDataItem[]|null
      */
-    public $emvData = null;
+    public ?array $emvData = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $encryptedPinBlock = null;
+    public ?string $encryptedPinBlock = null;
 
     /**
-     * @var bool
+     * @var bool|null
      */
-    public $isResponseToPinRequest = null;
+    public ?bool $isResponseToPinRequest = null;
 
     /**
-     * @var bool
+     * @var bool|null
      */
-    public $isRetryWithTheSameOperationId = null;
+    public ?bool $isRetryWithTheSameOperationId = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $pinMasterKeyReference = null;
+    public ?string $pinMasterKeyReference = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $track2Data = null;
+    public ?string $track2Data = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->emvData)) {
@@ -76,10 +76,11 @@ class PointOfSaleData extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): PointOfSaleData
     {
         parent::fromObject($object);
         if (property_exists($object, 'emvData')) {

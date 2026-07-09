@@ -13,29 +13,29 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class PlainCardData extends DataObject
 {
     /**
-     * @var string
+     * @var string|null
      */
-    public $cardNumber = null;
+    public ?string $cardNumber = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $cardSecurityCode = null;
+    public ?string $cardSecurityCode = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    public $cardSequenceNumber = null;
+    public ?int $cardSequenceNumber = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $expiryDate = null;
+    public ?string $expiryDate = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->cardNumber)) {
@@ -55,10 +55,11 @@ class PlainCardData extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): PlainCardData
     {
         parent::fromObject($object);
         if (property_exists($object, 'cardNumber')) {

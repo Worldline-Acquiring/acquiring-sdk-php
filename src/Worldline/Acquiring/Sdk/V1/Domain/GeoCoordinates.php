@@ -13,19 +13,19 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class GeoCoordinates extends DataObject
 {
     /**
-     * @var float
+     * @var float|null
      */
-    public $latitude = null;
+    public ?float $latitude = null;
 
     /**
-     * @var float
+     * @var float|null
      */
-    public $longitude = null;
+    public ?float $longitude = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->latitude)) {
@@ -39,10 +39,11 @@ class GeoCoordinates extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): GeoCoordinates
     {
         parent::fromObject($object);
         if (property_exists($object, 'latitude')) {

@@ -13,34 +13,34 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class ThreeDSecure extends DataObject
 {
     /**
-     * @var string
+     * @var string|null
      */
-    public $authenticationValue = null;
+    public ?string $authenticationValue = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $directoryServerTransactionId = null;
+    public ?string $directoryServerTransactionId = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $eci = null;
+    public ?string $eci = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $threeDSecureType = null;
+    public ?string $threeDSecureType = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $version = null;
+    public ?string $version = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->authenticationValue)) {
@@ -63,10 +63,11 @@ class ThreeDSecure extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): ThreeDSecure
     {
         parent::fromObject($object);
         if (property_exists($object, 'authenticationValue')) {

@@ -10,17 +10,17 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 /**
  * @package Worldline\Acquiring\Sdk\V1\Domain
  */
-class NetworkTokenData extends DataObject
+class MarketplaceData extends DataObject
 {
     /**
      * @var string|null
      */
-    public ?string $cryptogram = null;
+    public ?string $retailerCountryCode = null;
 
     /**
      * @var string|null
      */
-    public ?string $eci = null;
+    public ?string $retailerName = null;
 
     /**
      * @return object
@@ -28,11 +28,11 @@ class NetworkTokenData extends DataObject
     public function toObject(): object
     {
         $object = parent::toObject();
-        if (!is_null($this->cryptogram)) {
-            $object->cryptogram = $this->cryptogram;
+        if (!is_null($this->retailerCountryCode)) {
+            $object->retailerCountryCode = $this->retailerCountryCode;
         }
-        if (!is_null($this->eci)) {
-            $object->eci = $this->eci;
+        if (!is_null($this->retailerName)) {
+            $object->retailerName = $this->retailerName;
         }
         return $object;
     }
@@ -43,14 +43,14 @@ class NetworkTokenData extends DataObject
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject(object $object): NetworkTokenData
+    public function fromObject(object $object): MarketplaceData
     {
         parent::fromObject($object);
-        if (property_exists($object, 'cryptogram')) {
-            $this->cryptogram = $object->cryptogram;
+        if (property_exists($object, 'retailerCountryCode')) {
+            $this->retailerCountryCode = $object->retailerCountryCode;
         }
-        if (property_exists($object, 'eci')) {
-            $this->eci = $object->eci;
+        if (property_exists($object, 'retailerName')) {
+            $this->retailerName = $object->retailerName;
         }
         return $this;
     }

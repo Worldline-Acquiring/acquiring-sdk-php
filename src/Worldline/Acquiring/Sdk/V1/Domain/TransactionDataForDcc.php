@@ -14,24 +14,24 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class TransactionDataForDcc extends DataObject
 {
     /**
-     * @var AmountData
+     * @var AmountData|null
      */
-    public $amount = null;
+    public ?AmountData $amount = null;
 
     /**
-     * @var DateTime
+     * @var DateTime|null
      */
-    public $transactionTimestamp = null;
+    public ?DateTime $transactionTimestamp = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $transactionType = null;
+    public ?string $transactionType = null;
 
     /**
      * @return object
      */
-    public function toObject()
+    public function toObject(): object
     {
         $object = parent::toObject();
         if (!is_null($this->amount)) {
@@ -48,10 +48,11 @@ class TransactionDataForDcc extends DataObject
 
     /**
      * @param object $object
+     *
      * @return $this
      * @throws UnexpectedValueException
      */
-    public function fromObject($object)
+    public function fromObject(object $object): TransactionDataForDcc
     {
         parent::fromObject($object);
         if (property_exists($object, 'amount')) {
