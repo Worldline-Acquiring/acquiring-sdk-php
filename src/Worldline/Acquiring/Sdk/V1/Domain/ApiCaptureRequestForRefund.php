@@ -14,6 +14,11 @@ use Worldline\Acquiring\Sdk\Domain\DataObject;
 class ApiCaptureRequestForRefund extends DataObject
 {
     /**
+     * @var CapturePointOfSaleData|null
+     */
+    public ?CapturePointOfSaleData $capturePointOfSaleData = null;
+
+    /**
      * @var string|null
      */
     public ?string $operationId = null;
@@ -39,6 +44,9 @@ class ApiCaptureRequestForRefund extends DataObject
     public function toObject(): object
     {
         $object = parent::toObject();
+        if (!is_null($this->capturePointOfSaleData)) {
+            $object->capturePointOfSaleData = $this->capturePointOfSaleData->toObject();
+        }
         if (!is_null($this->operationId)) {
             $object->operationId = $this->operationId;
         }
@@ -63,6 +71,13 @@ class ApiCaptureRequestForRefund extends DataObject
     public function fromObject(object $object): ApiCaptureRequestForRefund
     {
         parent::fromObject($object);
+        if (property_exists($object, 'capturePointOfSaleData')) {
+            if (!is_object($object->capturePointOfSaleData)) {
+                throw new UnexpectedValueException('value \'' . print_r($object->capturePointOfSaleData, true) . '\' is not an object');
+            }
+            $value = new CapturePointOfSaleData();
+            $this->capturePointOfSaleData = $value->fromObject($object->capturePointOfSaleData);
+        }
         if (property_exists($object, 'operationId')) {
             $this->operationId = $object->operationId;
         }

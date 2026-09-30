@@ -24,6 +24,11 @@ class ApiCaptureRequest extends DataObject
     public ?CaptureAmountBreakdownData $captureAmountBreakdownData = null;
 
     /**
+     * @var CapturePointOfSaleData|null
+     */
+    public ?CapturePointOfSaleData $capturePointOfSaleData = null;
+
+    /**
      * @var int|null
      */
     public ?int $captureSequenceNumber = null;
@@ -75,6 +80,9 @@ class ApiCaptureRequest extends DataObject
         if (!is_null($this->captureAmountBreakdownData)) {
             $object->captureAmountBreakdownData = $this->captureAmountBreakdownData->toObject();
         }
+        if (!is_null($this->capturePointOfSaleData)) {
+            $object->capturePointOfSaleData = $this->capturePointOfSaleData->toObject();
+        }
         if (!is_null($this->captureSequenceNumber)) {
             $object->captureSequenceNumber = $this->captureSequenceNumber;
         }
@@ -124,6 +132,13 @@ class ApiCaptureRequest extends DataObject
             }
             $value = new CaptureAmountBreakdownData();
             $this->captureAmountBreakdownData = $value->fromObject($object->captureAmountBreakdownData);
+        }
+        if (property_exists($object, 'capturePointOfSaleData')) {
+            if (!is_object($object->capturePointOfSaleData)) {
+                throw new UnexpectedValueException('value \'' . print_r($object->capturePointOfSaleData, true) . '\' is not an object');
+            }
+            $value = new CapturePointOfSaleData();
+            $this->capturePointOfSaleData = $value->fromObject($object->capturePointOfSaleData);
         }
         if (property_exists($object, 'captureSequenceNumber')) {
             $this->captureSequenceNumber = $object->captureSequenceNumber;

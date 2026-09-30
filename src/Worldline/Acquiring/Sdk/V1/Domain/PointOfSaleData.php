@@ -18,11 +18,6 @@ class PointOfSaleData extends DataObject
     public ?array $emvData = null;
 
     /**
-     * @var string|null
-     */
-    public ?string $encryptedPinBlock = null;
-
-    /**
      * @var bool|null
      */
     public ?bool $isResponseToPinRequest = null;
@@ -33,9 +28,9 @@ class PointOfSaleData extends DataObject
     public ?bool $isRetryWithTheSameOperationId = null;
 
     /**
-     * @var string|null
+     * @var OnlinePinData|null
      */
-    public ?string $pinMasterKeyReference = null;
+    public ?OnlinePinData $onlinePinData = null;
 
     /**
      * @var string|null
@@ -56,17 +51,14 @@ class PointOfSaleData extends DataObject
                 }
             }
         }
-        if (!is_null($this->encryptedPinBlock)) {
-            $object->encryptedPinBlock = $this->encryptedPinBlock;
-        }
         if (!is_null($this->isResponseToPinRequest)) {
             $object->isResponseToPinRequest = $this->isResponseToPinRequest;
         }
         if (!is_null($this->isRetryWithTheSameOperationId)) {
             $object->isRetryWithTheSameOperationId = $this->isRetryWithTheSameOperationId;
         }
-        if (!is_null($this->pinMasterKeyReference)) {
-            $object->pinMasterKeyReference = $this->pinMasterKeyReference;
+        if (!is_null($this->onlinePinData)) {
+            $object->onlinePinData = $this->onlinePinData->toObject();
         }
         if (!is_null($this->track2Data)) {
             $object->track2Data = $this->track2Data;
@@ -93,17 +85,18 @@ class PointOfSaleData extends DataObject
                 $this->emvData[] = $value->fromObject($element);
             }
         }
-        if (property_exists($object, 'encryptedPinBlock')) {
-            $this->encryptedPinBlock = $object->encryptedPinBlock;
-        }
         if (property_exists($object, 'isResponseToPinRequest')) {
             $this->isResponseToPinRequest = $object->isResponseToPinRequest;
         }
         if (property_exists($object, 'isRetryWithTheSameOperationId')) {
             $this->isRetryWithTheSameOperationId = $object->isRetryWithTheSameOperationId;
         }
-        if (property_exists($object, 'pinMasterKeyReference')) {
-            $this->pinMasterKeyReference = $object->pinMasterKeyReference;
+        if (property_exists($object, 'onlinePinData')) {
+            if (!is_object($object->onlinePinData)) {
+                throw new UnexpectedValueException('value \'' . print_r($object->onlinePinData, true) . '\' is not an object');
+            }
+            $value = new OnlinePinData();
+            $this->onlinePinData = $value->fromObject($object->onlinePinData);
         }
         if (property_exists($object, 'track2Data')) {
             $this->track2Data = $object->track2Data;

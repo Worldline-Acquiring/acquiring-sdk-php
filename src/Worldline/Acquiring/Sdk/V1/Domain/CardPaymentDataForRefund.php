@@ -48,6 +48,11 @@ class CardPaymentDataForRefund extends DataObject
     public ?NetworkTokenData $networkTokenData = null;
 
     /**
+     * @var OriginalTransactionReferences|null
+     */
+    public ?OriginalTransactionReferences $originalTransactionReferences = null;
+
+    /**
      * @var PointOfSaleData|null
      */
     public ?PointOfSaleData $pointOfSaleData = null;
@@ -83,6 +88,9 @@ class CardPaymentDataForRefund extends DataObject
         }
         if (!is_null($this->networkTokenData)) {
             $object->networkTokenData = $this->networkTokenData->toObject();
+        }
+        if (!is_null($this->originalTransactionReferences)) {
+            $object->originalTransactionReferences = $this->originalTransactionReferences->toObject();
         }
         if (!is_null($this->pointOfSaleData)) {
             $object->pointOfSaleData = $this->pointOfSaleData->toObject();
@@ -130,6 +138,13 @@ class CardPaymentDataForRefund extends DataObject
             }
             $value = new NetworkTokenData();
             $this->networkTokenData = $value->fromObject($object->networkTokenData);
+        }
+        if (property_exists($object, 'originalTransactionReferences')) {
+            if (!is_object($object->originalTransactionReferences)) {
+                throw new UnexpectedValueException('value \'' . print_r($object->originalTransactionReferences, true) . '\' is not an object');
+            }
+            $value = new OriginalTransactionReferences();
+            $this->originalTransactionReferences = $value->fromObject($object->originalTransactionReferences);
         }
         if (property_exists($object, 'pointOfSaleData')) {
             if (!is_object($object->pointOfSaleData)) {

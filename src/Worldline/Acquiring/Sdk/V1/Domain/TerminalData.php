@@ -40,6 +40,11 @@ class TerminalData extends DataObject
     /**
      * @var string|null
      */
+    public ?string $mposDevice = null;
+
+    /**
+     * @var string|null
+     */
     public ?string $offlineAuthorizationResponseCode = null;
 
     /**
@@ -82,6 +87,9 @@ class TerminalData extends DataObject
         }
         if (!is_null($this->isOfflineApproved)) {
             $object->isOfflineApproved = $this->isOfflineApproved;
+        }
+        if (!is_null($this->mposDevice)) {
+            $object->mposDevice = $this->mposDevice;
         }
         if (!is_null($this->offlineAuthorizationResponseCode)) {
             $object->offlineAuthorizationResponseCode = $this->offlineAuthorizationResponseCode;
@@ -127,6 +135,9 @@ class TerminalData extends DataObject
         }
         if (property_exists($object, 'isOfflineApproved')) {
             $this->isOfflineApproved = $object->isOfflineApproved;
+        }
+        if (property_exists($object, 'mposDevice')) {
+            $this->mposDevice = $object->mposDevice;
         }
         if (property_exists($object, 'offlineAuthorizationResponseCode')) {
             $this->offlineAuthorizationResponseCode = $object->offlineAuthorizationResponseCode;
