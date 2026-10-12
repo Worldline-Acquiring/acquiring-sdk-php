@@ -4,6 +4,7 @@
  */
 namespace Worldline\Acquiring\Sdk\V1\Domain;
 
+use DateTime;
 use UnexpectedValueException;
 use Worldline\Acquiring\Sdk\Domain\DataObject;
 
@@ -21,6 +22,11 @@ class GetDccRateRequest extends DataObject
      * @var string|null
      */
     public ?string $operationId = null;
+
+    /**
+     * @var DateTime|null
+     */
+    public ?DateTime $originalPaymentDate = null;
 
     /**
      * @var PointOfSaleDataForDcc|null
@@ -53,6 +59,9 @@ class GetDccRateRequest extends DataObject
         }
         if (!is_null($this->operationId)) {
             $object->operationId = $this->operationId;
+        }
+        if (!is_null($this->originalPaymentDate)) {
+            $object->originalPaymentDate = $this->originalPaymentDate->format('Y-m-d');
         }
         if (!is_null($this->pointOfSaleData)) {
             $object->pointOfSaleData = $this->pointOfSaleData->toObject();
@@ -87,6 +96,9 @@ class GetDccRateRequest extends DataObject
         }
         if (property_exists($object, 'operationId')) {
             $this->operationId = $object->operationId;
+        }
+        if (property_exists($object, 'originalPaymentDate')) {
+            $this->originalPaymentDate = new DateTime($object->originalPaymentDate);
         }
         if (property_exists($object, 'pointOfSaleData')) {
             if (!is_object($object->pointOfSaleData)) {
